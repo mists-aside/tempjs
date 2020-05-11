@@ -1,0 +1,44 @@
+language: node_js
+node_js: # a good example: https://github.com/pillarjs/router/blob/master/.travis.yml
+  - "0.8"
+  - "0.10"
+  - "0.12"
+  - "1.8"
+  - "2.5"
+  - "3.3"
+  - "4.9"
+  - "5.12"
+  - "6.17"
+  - "7.10"
+  - "8.17"
+  - "9.11"
+  - "10.18"
+  - "11.15"
+  - "12.14"
+  - "13.7"
+  - lts/*
+  - node
+sudo: false
+cache:
+  directories:
+    - node_modules
+before_script:
+  # - npm i -g yarn
+  - test ! -d node_modules || npm prune
+scripts:
+  - npm run test
+  - npm run build
+# after_script:
+#   - test $TRAVIS_NODE_VERSION == '10' && sonar-scanner
+notifications:
+  email:
+    recipients:
+    - dragos.cirjan@gmail.com
+    on_success: never
+    on_failure: always
+# addons:
+#   sonarcloud:
+#     organization: "organisation"
+#     token:
+#       secure: "secure"
+
