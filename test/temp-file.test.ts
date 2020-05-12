@@ -96,6 +96,25 @@ describe('File', () => {
       expect(stat.size).to.equal(bytes('1Mb'));
     });
 
+    it(`calling tempFileOfSize({size: '1Mb'}, callback) should create a file of 1Mb`, (done) => {
+      const promise = tempFileOfSize({size: '1Mb'}, (err: Error | null, handle?: FileHandle) => {
+        if (err) throw err;
+
+        expect(handle).to.be.an('object');
+
+        fh = handle;
+        /* eslint-disable @typescript-eslint/no-non-null-assertion */
+        fs.promises.stat(fh!.name).then((stat) => {
+          expect(stat.size).to.equal(bytes('1Mb'));
+
+          done();
+        });
+        /* eslint-enable @typescript-eslint/no-non-null-assertion */
+      });
+
+      expect(promise).to.be.undefined;
+    });
+
     it(`calling tempFileOfSize({size: '20Mb'}) should create a file of 20Mb`, async () => {
       const promise = tempFileOfSize({size: '20Mb'});
       expect(promise instanceof Promise).to.be.true;
