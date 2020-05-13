@@ -2,6 +2,8 @@ import * as fs from 'fs';
 
 import * as os from 'os';
 
+import * as path from 'path';
+
 import bytes from 'bytes';
 
 import {expect} from 'chai';
@@ -11,6 +13,9 @@ import {FileHandle, tempFile, tempFileOfSize} from '../src/index';
 describe('File', () => {
   describe('tempFile', function () {
     let fh: FileHandle | undefined = undefined;
+
+    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_\-]+$/ : /\/test-[\w\d_\-]+$/;
+    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_\-]+\.txt$/ : /\/test-[\w\d_\-]+\.txt$/;
 
     // beforeEach(() => {});
 
@@ -55,16 +60,16 @@ describe('File', () => {
       expect(promise).to.be.undefined;
     });
 
-    it(`calling tempFile({pattern:'test-'}) should create an empty file in ${os.tmpdir()} with name matching /test-[\\w\\d_\\-]+$/`, async () => {
+    it(`calling tempFile({pattern:'test-'}) should create an empty file in ${os.tmpdir()} with name matching ${reEnd}`, async () => {
       fh = (await tempFile({pattern: 'test-'})) as FileHandle;
 
-      expect(fh.name).to.match(/\\test-[\w\d_\-]+$/);
+      expect(fh.name).to.match(reEnd);
     });
 
-    it(`calling tempFile({pattern:'test-*.txt'}) should create an empty file in ${os.tmpdir()} with name matching /test-[\\w\\d_\\-]+\\.txt$/`, async () => {
+    it(`calling tempFile({pattern:'test-*.txt'}) should create an empty file in ${os.tmpdir()} with name matching ${reMatch}`, async () => {
       fh = (await tempFile({pattern: 'test-*.txt'})) as FileHandle;
 
-      expect(fh.name).to.match(/\\test-[\w\d_\-]+\.txt$/);
+      expect(fh.name).to.match(reMatch);
     });
 
     it(`calling tempFile({dir: __dirname}) should create an empty file in ${__dirname}`, async () => {

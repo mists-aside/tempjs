@@ -2,6 +2,8 @@ import * as fs from 'fs';
 
 import * as os from 'os';
 
+import * as path from 'path';
+
 import {expect} from 'chai';
 
 import {tempDir} from '../src/index';
@@ -9,6 +11,9 @@ import {tempDir} from '../src/index';
 describe('Folder', () => {
   describe('tempDir', function () {
     let name: string | undefined = undefined;
+
+    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_\-]+$/ : /\/test-[\w\d_\-]+$/;
+    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_\-]+-folder$/ : /\/test-[\w\d_\-]+-folder$/;
 
     // beforeEach(() => {});
 
@@ -52,16 +57,16 @@ describe('Folder', () => {
       expect(promise).to.be.undefined;
     });
 
-    it(`calling tempDir({pattern:'test-'}) should create an empty directory in ${os.tmpdir()} with name matching /test-[\\w\\d_\\-]+$/`, async () => {
+    it(`calling tempDir({pattern:'test-'}) should create an empty directory in ${os.tmpdir()} with name matching ${reEnd}`, async () => {
       name = (await tempDir({pattern: 'test-'})) as string;
 
-      expect(name).to.match(/\\test-[\w\d_\-]+$/);
+      expect(name).to.match(reEnd);
     });
 
-    it(`calling tempDir({pattern:'test-*-folder'}) should create an empty directory in ${os.tmpdir()} with name matching /test-[\\w\\d_\\-]+\\-folder$/`, async () => {
+    it(`calling tempDir({pattern:'test-*-folder'}) should create an empty directory in ${os.tmpdir()} with name matching ${reMatch}`, async () => {
       name = (await tempDir({pattern: 'test-*-folder'})) as string;
 
-      expect(name).to.match(/\\test-[\w\d_\-]+\-folder$/);
+      expect(name).to.match(reMatch);
     });
 
     it(`calling tempDir({dir: __dirname}) should create an empty directory in ${__dirname}`, async () => {
