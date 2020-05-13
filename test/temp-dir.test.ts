@@ -33,7 +33,6 @@ describe('Folder', () => {
 
       expect(name.indexOf(os.tmpdir())).to.equal(0);
       expect(stat.isDirectory()).to.be.true;
-      expect(stat.size).to.equal(0);
     });
 
     it(`calling tempDir({}, callback) should create an empty directory in ${os.tmpdir()}`, (done) => {
@@ -47,7 +46,6 @@ describe('Folder', () => {
         fs.promises.stat(dirName!).then((stat) => {
           expect(dirName!.indexOf(os.tmpdir())).to.equal(0);
           expect(stat.isDirectory()).to.be.true;
-          expect(stat.size).to.equal(0);
 
           done();
         });
@@ -106,7 +104,6 @@ describe('Folder', () => {
 
       expect(name.indexOf(os.tmpdir())).to.equal(0);
       expect(stat.isDirectory()).to.be.true;
-      expect(stat.size).to.equal(0);
     });
   });
 });
