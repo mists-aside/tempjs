@@ -229,6 +229,12 @@ export type TempDirValidationCallback = (err: Error | null, name?: string) => vo
 
 export type TempDirOptions = {default?: boolean} & TempFileOptions;
 
+const defaultTempDirOptions = {
+  default: false,
+  dir: os.tmpdir(),
+  pattern: '',
+};
+
 /**
  * This is a rewrite of the GoLang [os.TempDir](https://golang.org/pkg/io/ioutil/#TempDir) method, with additional
  * functionality.
@@ -249,9 +255,7 @@ export type TempDirOptions = {default?: boolean} & TempFileOptions;
  */
 export const tempDir = (options?: TempDirOptions, callback?: TempDirValidationCallback): Promise<string> | void => {
   const localOptions = {
-    default: false,
-    dir: os.tmpdir(),
-    pattern: '',
+    ...defaultTempDirOptions,
     ...(options || {}),
   };
 
@@ -290,49 +294,112 @@ export type tempDirWithFilesOptions = {
   maxSubFolders?: number;
   maxFilesPerDir?: number;
   maxFileSize?: string;
+  randomize?: boolean;
 } & TempDirOptions;
 
-// const generatePaths = (maxSubfolders: number, depth: number): string[] => {
-//   if (depth === 0) {
-//     return [];
-//   }
-//   const randSubfolders = Math.trunc(Math.random() * 1000) % maxSubfolders;
-//   let dirs: string[] = [];
-//   for (let i = 0; i < randSubfolders; i++) {
-//     const dir = shortid.generate();
-//     dirs.push(dir);
-//     dirs = dirs.concat(dirs, generatePaths(maxSubfolders, depth - 1));
-//   }
-//   return dirs;
-// };
+export type TempDirWithFilesValidationCallback = (err: Error | null, data?: [string, string[], string[]]) => void;
 
+/**
+ * `tempDirWithFiles` creates a new temporary directory in the directory dir. New directory will recursively contain
+ * other a max of `options.maxSubFolders` (can be randomized) directories to max depth of `options.maxDepth` (can
+ * be randomized). Also, each folder will contain a maximum number of `options.maxFilesPerDir` (can be randomized),
+ * each file having the max size of `options.maxFileSize` (can be randomized).
+ * To randomize values, set `options.randomize` to true.
+ *
+ * For the main parent folder, function will also inherit the parameters of `tempDir`.
+ *
+ * Will return a touple of values where:
+ * - 1st is the path of the parent folder
+ * - 2nd is a list of all created folders, including parent folder
+ * - 3rd is a list of all created files
+ *
+ * @param {TempDirOptions} options optional
+ * @param {TempDirValidationCallback} callback optional
+ * @returns {Promise<[string, string[], string[]]>|void} Returns Promise if callback is not defined, void if callback is defined.
+ */
 export const tempDirWithFiles = (
-  options: tempDirWithFilesOptions,
-  callback?: TempDirValidationCallback,
-): Promise<string> | void => {
+  options?: tempDirWithFilesOptions,
+  callback?: TempDirWithFilesValidationCallback,
+): Promise<[string, string[], string[]]> | void => {
   const localOptions = {
+    ...defaultTempDirOptions,
     maxDepth: 5,
     maxSubFolders: 5,
     maxFilesPerDir: 5,
-    maxFilesSize: '10Mb',
-    ...options,
+    maxFileSize: '10Mb',
+    randomize: false,
+    ...(options || {}),
   };
 
-  // let tempDirPath = '';
-  // try {
-  //   tempDirPath = (await tempDir(localOptions)) as string;
-  // } catch (e) {
-  //   if (callback) {
-  //     return callback(e);
-  //   }
-  //   throw e;
-  // }
+  const promise = new Promise<[string, string[], string[]]>(async (resolve) => {
+    const tempDirPath = (await tempDir(localOptions)) as string;
+    const paths: string[] = [tempDirPath];
+    const files: string[] = [];
 
-  // const dirs = generatePaths(localOptions.maxSubFolders, localOptions.maxDepth);
+    // randomizing max depth
+    let maxDepth = localOptions.maxDepth;
+    if (localOptions.randomize) {
+      maxDepth = Math.floor(Math.random() * 100) % localOptions.maxDepth;
+    }
+
+    for (let depth = 1; depth <= maxDepth; depth++) {
+      // obtain the set of folders with a specific depth
+      const pathsOfDepth = paths.filter(
+        (p) =>
+          p
+            .replace(localOptions.dir, '')
+            .replace(new RegExp(`^${path.sep}+`, 'ig'), '')
+            .split(path.sep).length === depth,
+      );
+      // on each new path, randomizing max number of subfolders
+      let maxSubFolders = localOptions.maxSubFolders;
+      if (localOptions.randomize) {
+        maxSubFolders = Math.floor(Math.random() * 100) % localOptions.maxSubFolders;
+      }
+      while (maxSubFolders > 0) {
+        for (const pod of pathsOfDepth) {
+          const newPath = await tempDir({
+            dir: pod,
+          });
+          if (newPath) {
+            paths.push(newPath);
+          }
+        }
+        maxSubFolders--;
+      }
+    }
+
+    for (const p of paths) {
+      // on each new path, randomizing max number of files
+      let maxFilesPerDir = localOptions.maxFilesPerDir;
+      if (localOptions.randomize) {
+        maxFilesPerDir = Math.floor(Math.random() * 100) % localOptions.maxFilesPerDir;
+      }
+      while (maxFilesPerDir > 0) {
+        // on each new path, randomizing size
+        let size = bytes(localOptions.maxFileSize);
+        if (localOptions.randomize) {
+          size = Math.floor(Math.random() * Math.pow(10, `${size}`.length + 2)) % size;
+        }
+        // create file
+        const file = await tempFileOfSize({
+          dir: p,
+          size: bytes(size),
+        });
+        if (file) {
+          file.close();
+          files.push(file.name);
+        }
+        maxFilesPerDir--;
+      }
+    }
+
+    resolve([paths[0], paths, files]);
+  });
 
   if (!callback) {
-    return;
+    return promise;
   }
 
-  callback(null, JSON.stringify(localOptions));
+  promise.then((result) => callback(null, result)).catch(callback);
 };
