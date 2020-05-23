@@ -115,7 +115,9 @@ describe('Folder', () => {
 
     afterEach(async () => {
       if (dwfResult !== undefined) {
+        /* eslint-disable @typescript-eslint/no-non-null-assertion */
         await new Promise((resolve) => rimraf(dwfResult![0], {}, resolve));
+        /* eslint-enable @typescript-eslint/no-non-null-assertion */
         dwfResult = undefined;
       }
     });
