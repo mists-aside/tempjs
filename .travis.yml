@@ -28,9 +28,8 @@ notifications:
       - dragos.cirjan@gmail.com
     on_success: never
     on_failure: always
-# addons:
-#   sonarcloud:
-#     organization: "organisation"
-#     token:
-#       secure: "secure"
-
+addons:
+  sonarcloud:
+    organization: "mists-aside"
+    token:
+      secure: "WlxoMMZGNpv/IQCqBXNLJClQkL2rseP8mclRRJh4N60bfhhsS58xwyh/KHUjpDN+7zZG/bP/v1L/1CDU7loLnsQPB2f8UeNecukaYx12dRixkKm2WiWXbQHDweZdFpDq/F5dqmbCsDC+LTmaBmhlddJCafXgXM8pVEXYAHZx6A+YluTDAOPE1MMEZlgpjB32sLnMFPiSeW2Ov9WtoTigIG2jpvoBXKJztcTXdn8QdKoxK+19nkReA3UxKHhajMt/xo9+85sqtRXyIumuk0x6iP0256SyjidOY/joQiD9GmmJLPILkWjEH/I6q0Z4eHutiGDwdZ2PCnmcF+cQB2qPssnl+JxHXQcKeFp05aa7GSDGyJezLCPbbX0c1tZZmHP/qKuwFyIK8QRbkwy9+7A5a2sY+YQOqZI8UO5kBmI9uEKF32ofIu/Nnz1BWobHcytWRclK34Cdd1MGFLRBA34j9TpiyuSIGG6bDxei+QVm80QF9MpX86kJm+Z9VoSL0VJZMs17osy1nF1xTBKlrEaOjA/BVRRzYoYvxF8XUFUd76FB5GrcGwNJD5V8C6G6Mn/ihF2SyQlOQkl3aAmuqY8pJIIFQLGhT1DD1p9UjB+h4TTlmq30lbMi9PPgQSzKihIm6/JVBLcoyuQZW4hNPKmYq6fa7/S2CfPMFi4pLwjVcDQ="

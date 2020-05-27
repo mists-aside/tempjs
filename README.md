@@ -2,17 +2,17 @@
 
 Set of shield/badges explaining where to find more information about the project (i.e. Where to look for unit test reports, where to see code coverage and code scans, etc.). You can find a lot of them on https://shields.io/)
 
-<!-- [![Npm Version](https://img.shields.io/npm/v/frameworks.svg)](https://www.npmjs.com/package/frameworks) -->
-<!-- [![HitCount](http://hits.dwyl.io/dragoscirjan/template.svg)](http://hits.dwyl.io/dragoscirjan/template) -->
-<!-- [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dragoscirjan/template/issues) -->
+[![Npm Version](https://img.shields.io/npm/v/frameworks.svg)](https://www.npmjs.com/package/frameworks)
+[![Contributors](https://img.shields.io/github/contributors/mists-aside/tempjs)](https://img.shields.io/github/contributors/mists-aside/tempjs)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mists-aside/tempjs/issues)
 
-[![TravisCI](https://travis-ci.org/dragoscirjan/template.svg?branch=master)](https://travis-ci.org/dragoscirjan/template)
-<!-- [![CircleCI](https://circleci.com/gh/dragoscirjan/template.svg?style=shield)](https://circleci.com/gh/dragoscirjan/template) -->
+[![TravisCI](https://travis-ci.org/mists-aside/tempjs.svg?branch=master)](https://travis-ci.org/mists-aside/tempjs)
+<!-- [![CircleCI](https://circleci.com/gh/mists-aside/tempjs.svg?style=shield)](https://circleci.com/gh/mists-aside/tempjs) -->
 
-[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=dragoscirjan_template&metric=alert_status)](https://sonarcloud.io/dashboard?id=dragoscirjan_template) 
- [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=dragoscirjan_template&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=dragoscirjan_template)
- [![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=dragoscirjan_template&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=dragoscirjan_template)
- [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=dragoscirjan_template&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/security_rating/list?id=dragoscirjan_template)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=mists-aside_tempjs&metric=alert_status)](https://sonarcloud.io/dashboard?id=mists-aside_tempjs) 
+[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=mists-aside_tempjs&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=mists-aside_tempjs)
+[![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=mists-aside_tempjs&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=mists-aside_tempjs)
+[![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=mists-aside_tempjs&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/security_rating/list?id=mists-aside_tempjs)
 
 <!--
 [![Donate to this project using Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/dragoscirjan)
@@ -30,140 +30,81 @@ Set of shield/badges explaining where to find more information about the project
 
 One Paragraph of project description goes here
 
-<!--
-Insert Table of Contents Here
-This can be done using [AlanWalk.markdown-toc](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc) plugin, 
-which is also included in 
-[itmcdev.generic-extension-pack](https://marketplace.visualstudio.com/items?itemName=itmcdev.generic-extension-pack) extension pack.
--->
 <!-- TOC -->
 
 - [Project Title](#project-title)
   - [Getting Started](#getting-started)
-    - [Prereqiusites / Dependencies](#prereqiusites--dependencies)
-      - [For Windows](#for-windows)
-      - [For Linux](#for-linux)
-      - [Known Issues / Troubleshooting](#known-issues--troubleshooting)
     - [Installation](#installation)
-      - [Say what the step will be](#say-what-the-step-will-be)
-      - [And repeat](#and-repeat)
+      - [Code](#code)
+      - [Documentation](#documentation)
     - [Development](#development)
+      - [Requirements](#requirements)
     - [Testing](#testing)
-      - [Break down into (at least) unit tests](#break-down-into-at-least-unit-tests)
-      - [and end to end tests](#and-end-to-end-tests)
-      - [And coding style tests](#and-coding-style-tests)
     - [Deployment](#deployment)
   - [Authors](#authors)
   - [Issues / Support](#issues--support)
-  - [License](#license)
-  - [Changelog](#changelog)
 
 <!-- /TOC -->
 
 ## Getting Started
 
-### Prereqiusites / Dependencies
-
-What things you need to install the software and how to install them (based on each OS type). 
-
-#### For Windows
-```bash
-# Give Examples
-
-npm install -g node-gyp windows-build-tools
-# Warning: Please note windows-build-tools will install MSVS which takes a 
-# LONG amount of time.
-```
-
-#### For Linux
-
-```bash
-# Give Examples
-
-apt-get install build-essential mono
-npm install -y node-gyp
-```
-
-#### Known Issues / Troubleshooting
-
-Describe a list of known issues, and how to bypass them.
-
 ### Installation
 
-A step by step series of examples that tell you how to get a development env running
+Use **npm** (or any other package manager) do add this module to your project.
 
-
-#### Say what the step will be
-
-```
-Give the example
+```bash
+npm i -D @mists/tempjs
 ```
 
-#### And repeat
+#### Code
 
-```
-until finished
+```typescript
+import {FileHandle, tempFile, tempFileOfSize} from '@mists/tempjs';
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+#### Documentation
+
+See documentation [here](/doc/doc.md)
 
 ### Development
 
-Explain any development process for the project, if necesary
+If you have access to the project clone it, otherwise fork it and clone it:
 
 ```
-give examples
+git clone https://github.com/mists-aside/tempjs
+# create a new branch if necesary
+git create -b new_feature
 ```
+
+Code ;)
+
+#### Requirements
+
+- Please install [NodeJs](https://nodejs.org/en/). We support version 10.x and above.
+- Please instal a JavaScript/TypeScript IDE
+  - [Visual Studio Code](https://code.visualstudio.com/) with [ITMCDev Babel Extension Pack](https://marketplace.visualstudio.com/items?itemName=itmcdev.node-babel-extension-pack) or [ITMCDev TypeScript Extension Pack](https://marketplace.visualstudio.com/items?itemName=itmcdev.node-typescript-extension-pack)
+  - [Jetbrains WebStorm](https://www.jetbrains.com/webstorm/)
+  - [Vim](https://www.vim.org/) with [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) and [HerringtonDarkholme/yats.vim](https://github.com/HerringtonDarkholme/yats.vim) extensions.
+  - Any other IDE you trust.
 
 ### Testing
 
+Just run `npm run test`. 
 
-Explain how to run the automated tests for this system
+If you wish to run a single test file, use `npm run test:single -- test/file.test.ts`
 
-#### Break down into (at least) unit tests
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-#### and end to end tests
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-#### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+No need to compile tests, mocha is configured to run TypeScript.
 
 ### Deployment
 
-Add additional notes about how to deploy this on a live system
+NPM publishing *~~is done~~* will be done automatically, through `.travis.yaml`. Please do not attempt to change the publishig routine.
 
 ## Authors
-* [Dragos Cirjan](mailto:dragos.cirjan@gmail.com) - Initial work - [PurpleBooth](#link-to-change)
+
+- [Dragos Cirjan](mailto:dragos.cirjan@gmail.com) - Initial work - [Go Template](/mists-aside/tempjs)
 
 See also the list of contributors who participated in this project.
 
 ## Issues / Support
 
-Add a set of links to the [issues](/dragoscirjan/template/issues) page/website, so people can know where to add issues/bugs or ask for support.
-
-## License
-
-(If the package is public, add licence)
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Changelog
-
-Small changelog history. The rest should be added to [CHANGELOG.md](CHANGELOG.md).
-
-See here a template for changelogs: https://keepachangelog.com/en/1.0.0/
-
-Also see this tool for automatically generating them: https://www.npmjs.com/package/changelog
+Add a set of links to the [issues](/mists-aside/tempjs/issues) page/website, so people can know where to add issues/bugs or ask for support.
