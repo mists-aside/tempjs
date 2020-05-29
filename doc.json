@@ -1,0 +1,3362 @@
+{
+	"id": 0,
+	"name": "@mists/temp",
+	"kind": 0,
+	"flags": {},
+	"originalName": "",
+	"children": [
+		{
+			"id": 1,
+			"name": "FileHandle",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Enhancement of the [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle), which is a wrapper\nfor a numeric file descriptor. Instances of FileHandle are distinct from numeric file descriptors in that they\nprovide an object oriented API for working with files.",
+				"text": "Read more about FileHandles at [NodeJs.org](https://nodejs.org/api/fs.html#fs_class_filehandle)\n"
+			},
+			"children": [
+				{
+					"id": 2,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {
+						"isPrivate": true,
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "Constructor of the FileHandle. Private. Use `create()` method instead."
+					},
+					"signatures": [
+						{
+							"id": 6,
+							"name": "new FileHandle",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "Constructor of the FileHandle. Private. Use `create()` method instead."
+							},
+							"parameters": [
+								{
+									"id": 7,
+									"name": "filename",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"shortText": "Name of created file"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 8,
+									"name": "filehandle",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"shortText": "NodeJs stored [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle)"
+									},
+									"type": {
+										"type": "reference",
+										"name": "FileHandle"
+									}
+								},
+								{
+									"id": 9,
+									"name": "fd",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"shortText": "See [fs.promises.FileHandle.fd](https://nodejs.org/api/fs.html#fs_filehandle_fd)\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 1,
+								"name": "FileHandle"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 20,
+							"character": 59
+						}
+					]
+				},
+				{
+					"id": 5,
+					"name": "fd",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true,
+						"isExported": true,
+						"isConstructorProperty": true
+					},
+					"comment": {
+						"shortText": "See [fs.promises.FileHandle.fd](https://nodejs.org/api/fs.html#fs_filehandle_fd)\n"
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 101
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					}
+				},
+				{
+					"id": 4,
+					"name": "filehandle",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPrivate": true,
+						"isExported": true,
+						"isConstructorProperty": true
+					},
+					"comment": {
+						"shortText": "NodeJs stored [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle)"
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 66
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "FileHandle"
+					}
+				},
+				{
+					"id": 3,
+					"name": "filename",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPrivate": true,
+						"isExported": true,
+						"isConstructorProperty": true
+					},
+					"comment": {
+						"shortText": "Name of created file"
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 38
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 13,
+					"name": "fileHanle",
+					"kind": 262144,
+					"kindString": "Accessor",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "Returns the default Nodejs [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle) instance."
+					},
+					"getSignature": [
+						{
+							"id": 14,
+							"name": "__get",
+							"kind": 524288,
+							"kindString": "Get signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "Returns the default Nodejs [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle) instance."
+							},
+							"type": {
+								"type": "reference",
+								"name": "FileHandle"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 51,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 15,
+					"name": "name",
+					"kind": 262144,
+					"kindString": "Accessor",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "Returns the name of the created/opened file."
+					},
+					"getSignature": [
+						{
+							"id": 16,
+							"name": "__get",
+							"kind": 524288,
+							"kindString": "Get signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "Returns the name of the created/opened file."
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 58,
+							"character": 10
+						}
+					]
+				},
+				{
+					"id": 17,
+					"name": "appendFile",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 18,
+							"name": "appendFile",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.appendFile()](https://nodejs.org/api/fs.html#fs_filehandle_appendfile_data_options)"
+							},
+							"parameters": [
+								{
+									"id": 19,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 20,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 21,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"children": [
+														{
+															"id": 22,
+															"name": "encoding",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 67,
+																	"character": 23
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "null"
+																	}
+																]
+															}
+														},
+														{
+															"id": 24,
+															"name": "flag",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 67,
+																	"character": 69
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														},
+														{
+															"id": 23,
+															"name": "mode",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 67,
+																	"character": 45
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Variables",
+															"kind": 32,
+															"children": [
+																22,
+																24,
+																23
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 67,
+															"character": 13
+														}
+													]
+												}
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 65,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 25,
+					"name": "chmod",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 26,
+							"name": "chmod",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.chmod()](https://nodejs.org/api/fs.html#fs_filehandle_chmod_mode)"
+							},
+							"parameters": [
+								{
+									"id": 27,
+									"name": "mode",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 75,
+							"character": 7
+						}
+					]
+				},
+				{
+					"id": 28,
+					"name": "chown",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 29,
+							"name": "chown",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.chown()](https://nodejs.org/api/fs.html#fs_filehandle_chown_uid_gid)"
+							},
+							"parameters": [
+								{
+									"id": 30,
+									"name": "uid",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 31,
+									"name": "gid",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 82,
+							"character": 7
+						}
+					]
+				},
+				{
+					"id": 32,
+					"name": "close",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 33,
+							"name": "close",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.close()](https://nodejs.org/api/fs.html#fs_filehandle_close)"
+							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 89,
+							"character": 7
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": "datasync",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 35,
+							"name": "datasync",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.datasync()](https://nodejs.org/api/fs.html#fs_filehandle_datasync)"
+							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 96,
+							"character": 10
+						}
+					]
+				},
+				{
+					"id": 36,
+					"name": "read",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 37,
+							"name": "read",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_read_buffer_offset_length_position)"
+							},
+							"typeParameter": [
+								{
+									"id": 38,
+									"name": "TBuffer",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Uint8Array"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 39,
+									"name": "buffer",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "TBuffer",
+										"constraint": {
+											"type": "reference",
+											"name": "Uint8Array"
+										}
+									}
+								},
+								{
+									"id": 40,
+									"name": "offset",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								},
+								{
+									"id": 41,
+									"name": "length",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								},
+								{
+									"id": 42,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 43,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"children": [
+												{
+													"id": 45,
+													"name": "buffer",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 108,
+															"character": 39
+														}
+													],
+													"type": {
+														"type": "typeParameter",
+														"name": "TBuffer",
+														"constraint": {
+															"type": "reference",
+															"name": "Uint8Array"
+														}
+													}
+												},
+												{
+													"id": 44,
+													"name": "bytesRead",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 108,
+															"character": 23
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Variables",
+													"kind": 32,
+													"children": [
+														45,
+														44
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "index.ts",
+													"line": 108,
+													"character": 13
+												}
+											]
+										}
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 103,
+							"character": 6
+						}
+					]
+				},
+				{
+					"id": 46,
+					"name": "readFile",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 47,
+							"name": "readFile",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)"
+							},
+							"parameters": [
+								{
+									"id": 48,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 49,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"children": [
+														{
+															"id": 50,
+															"name": "encoding",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 115,
+																	"character": 30
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "null"
+																	},
+																	{
+																		"type": "reference",
+																		"name": "BufferEncoding"
+																	}
+																]
+															}
+														},
+														{
+															"id": 51,
+															"name": "flag",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 115,
+																	"character": 60
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Variables",
+															"kind": 32,
+															"children": [
+																50,
+																51
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 115,
+															"character": 20
+														}
+													]
+												}
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Buffer"
+									}
+								],
+								"name": "Promise"
+							}
+						},
+						{
+							"id": 52,
+							"name": "readFile",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 53,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 54,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"children": [
+														{
+															"id": 55,
+															"name": "encoding",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 116,
+																	"character": 29
+																}
+															],
+															"type": {
+																"type": "reference",
+																"name": "BufferEncoding"
+															}
+														},
+														{
+															"id": 56,
+															"name": "flag",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 116,
+																	"character": 51
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Variables",
+															"kind": 32,
+															"children": [
+																55,
+																56
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 116,
+															"character": 19
+														}
+													]
+												}
+											},
+											{
+												"type": "reference",
+												"name": "BufferEncoding"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 115,
+							"character": 10
+						},
+						{
+							"fileName": "index.ts",
+							"line": 116,
+							"character": 10
+						},
+						{
+							"fileName": "index.ts",
+							"line": 117,
+							"character": 10
+						}
+					]
+				},
+				{
+					"id": 57,
+					"name": "readv",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 58,
+							"name": "readv",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.readv()](https://nodejs.org/api/fs.html#fs_filehandle_readv_buffers_position)"
+							},
+							"parameters": [
+								{
+									"id": 59,
+									"name": "buffers",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "reference",
+											"name": "NodeJS.ArrayBufferView"
+										}
+									}
+								},
+								{
+									"id": 60,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "ReadVResult"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 124,
+							"character": 7
+						}
+					]
+				},
+				{
+					"id": 61,
+					"name": "stat",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 62,
+							"name": "stat",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.stat()](https://nodejs.org/api/fs.html#fs_filehandle_stat_options)"
+							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Stats"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 131,
+							"character": 6
+						}
+					]
+				},
+				{
+					"id": 63,
+					"name": "sync",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 64,
+							"name": "sync",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.sync()](https://nodejs.org/api/fs.html#fs_filehandle_sync)"
+							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 138,
+							"character": 6
+						}
+					]
+				},
+				{
+					"id": 65,
+					"name": "truncate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 66,
+							"name": "truncate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.truncate()](https://nodejs.org/api/fs.html#fs_filehandle_sync)"
+							},
+							"parameters": [
+								{
+									"id": 67,
+									"name": "len",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 145,
+							"character": 10
+						}
+					]
+				},
+				{
+					"id": 68,
+					"name": "utimes",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 69,
+							"name": "utimes",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.utimes()](https://nodejs.org/api/fs.html#fs_filehandle_utimes_atime_mtime)"
+							},
+							"parameters": [
+								{
+									"id": 70,
+									"name": "atime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											}
+										]
+									}
+								},
+								{
+									"id": 71,
+									"name": "mtime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 152,
+							"character": 8
+						}
+					]
+				},
+				{
+					"id": 72,
+					"name": "write",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 73,
+							"name": "write",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.write()](https://nodejs.org/api/fs.html#fs_filehandle_write_string_position_encoding)"
+							},
+							"parameters": [
+								{
+									"id": 74,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 75,
+									"name": "args",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isRest": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 76,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"children": [
+												{
+													"id": 78,
+													"name": "buffer",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 164,
+															"character": 42
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												},
+												{
+													"id": 77,
+													"name": "bytesWritten",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 164,
+															"character": 26
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Variables",
+													"kind": 32,
+													"children": [
+														78,
+														77
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "index.ts",
+													"line": 164,
+													"character": 13
+												}
+											]
+										}
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 161,
+							"character": 7
+						}
+					]
+				},
+				{
+					"id": 79,
+					"name": "writeFile",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 80,
+							"name": "writeFile",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.writeFile()](https://nodejs.org/api/fs.html#fs_filehandle_writefile_data_options)"
+							},
+							"parameters": [
+								{
+									"id": 81,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 82,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 83,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"children": [
+														{
+															"id": 84,
+															"name": "encoding",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 173,
+																	"character": 23
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "null"
+																	}
+																]
+															}
+														},
+														{
+															"id": 86,
+															"name": "flag",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 173,
+																	"character": 69
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														},
+														{
+															"id": 85,
+															"name": "mode",
+															"kind": 32,
+															"kindString": "Variable",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "index.ts",
+																	"line": 173,
+																	"character": 45
+																}
+															],
+															"type": {
+																"type": "union",
+																"types": [
+																	{
+																		"type": "intrinsic",
+																		"name": "string"
+																	},
+																	{
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																]
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Variables",
+															"kind": 32,
+															"children": [
+																84,
+																86,
+																85
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "index.ts",
+															"line": 173,
+															"character": 13
+														}
+													]
+												}
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 171,
+							"character": 11
+						}
+					]
+				},
+				{
+					"id": 87,
+					"name": "writev",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 88,
+							"name": "writev",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_writev_buffers_position)"
+							},
+							"parameters": [
+								{
+									"id": 89,
+									"name": "buffers",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "reference",
+											"name": "NodeJS.ArrayBufferView"
+										}
+									}
+								},
+								{
+									"id": 90,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "WriteVResult"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 181,
+							"character": 8
+						}
+					]
+				},
+				{
+					"id": 10,
+					"name": "create",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true,
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 11,
+							"name": "create",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "Asynchronous file create that returns a Promise that, when resolved, yields a FileHandle object.",
+								"text": "File will be created and opened with 'w+' flag\n(see [support of file system flags](https://nodejs.org/api/fs.html#fs_file_system_flags)) and 0o666 mode.\n\n``` typescript\nconst fh = FileHandle.create('/tmp/new-file.txt')\n```\n"
+							},
+							"parameters": [
+								{
+									"id": 12,
+									"name": "filename",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "Name of the file to create.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 1,
+										"name": "FileHandle"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 42,
+							"character": 28
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"kind": 512,
+					"children": [
+						2
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						5,
+						4,
+						3
+					]
+				},
+				{
+					"title": "Accessors",
+					"kind": 262144,
+					"children": [
+						13,
+						15
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						17,
+						25,
+						28,
+						32,
+						34,
+						36,
+						46,
+						57,
+						61,
+						63,
+						65,
+						68,
+						72,
+						79,
+						87,
+						10
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 20,
+					"character": 23
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "FileHandle"
+				}
+			]
+		},
+		{
+			"id": 91,
+			"name": "TempFileOptions",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Options used by `tempFile` call, see description of the method."
+			},
+			"children": [
+				{
+					"id": 92,
+					"name": "dir",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "Path to the temporary location you wish to use.\nIf not mentioned, `[os.tmpdir()](https://nodejs.org/api/os.html#os_os_tmpdir)` will be used."
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 202,
+							"character": 5
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "intrinsic",
+								"name": "undefined"
+							},
+							{
+								"type": "intrinsic",
+								"name": "string"
+							}
+						]
+					}
+				},
+				{
+					"id": 93,
+					"name": "pattern",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "Pattern used for generating the file name. If \"*\" is present in the given pattern, it will be replaced wotj the\nunique token value; otherwise the unique token value will be added to the end of the pattern name."
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 207,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "intrinsic",
+								"name": "undefined"
+							},
+							{
+								"type": "intrinsic",
+								"name": "string"
+							}
+						]
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						92,
+						93
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 197,
+					"character": 32
+				}
+			]
+		},
+		{
+			"id": 115,
+			"name": "TempDirOptions",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 342,
+					"character": 26
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 116,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"children": [
+								{
+									"id": 117,
+									"name": "default",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 342,
+											"character": 37
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "false"
+											},
+											{
+												"type": "intrinsic",
+												"name": "true"
+											}
+										]
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										117
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 342,
+									"character": 28
+								}
+							]
+						}
+					},
+					{
+						"type": "reference",
+						"id": 91,
+						"name": "TempFileOptions"
+					}
+				]
+			}
+		},
+		{
+			"id": 110,
+			"name": "TempDirValidationCallback",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 340,
+					"character": 37
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 111,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 112,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 113,
+									"name": "err",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Error"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								},
+								{
+									"id": 114,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 340,
+							"character": 39
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 133,
+			"name": "TempDirWithFilesValidationCallback",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 412,
+					"character": 46
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 134,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 135,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 136,
+									"name": "err",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Error"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								},
+								{
+									"id": 137,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 412,
+							"character": 48
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 103,
+			"name": "TempFileOfSizeOptions",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Options used by `tempFileOfSize` call, see description of the method."
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 266,
+					"character": 33
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 104,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"children": [
+								{
+									"id": 105,
+									"name": "size",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"shortText": "Size of the created file defined as a string representing a number followe by the 'b', 'Kb', 'Mb', 'Gb', 'Tb',\n'Pb' sufixes.",
+										"text": "```javascript\ntempFileOfSize({ size: '50Mb' })\n```\n"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 276,
+											"character": 6
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										105
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 266,
+									"character": 35
+								}
+							]
+						}
+					},
+					{
+						"type": "reference",
+						"id": 91,
+						"name": "TempFileOptions"
+					}
+				]
+			}
+		},
+		{
+			"id": 94,
+			"name": "TempFileValidationCallback",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Callback method can be used by `tempFile` when you don't want to return a Promise.",
+				"tags": [
+					{
+						"tag": "param",
+						"text": "Error returned by `tempFile` call",
+						"param": "err"
+					},
+					{
+						"tag": "param",
+						"text": "`FileHandle` returned by `tempFile` call\n",
+						"param": "file"
+					}
+				]
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 192,
+					"character": 38
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 95,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 96,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 97,
+									"name": "err",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Error"
+											},
+											{
+												"type": "intrinsic",
+												"name": "null"
+											}
+										]
+									}
+								},
+								{
+									"id": 98,
+									"name": "file",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 1,
+										"name": "FileHandle"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 192,
+							"character": 40
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 126,
+			"name": "tempDirWithFilesOptions",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 404,
+					"character": 35
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 127,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"children": [
+								{
+									"id": 128,
+									"name": "maxDepth",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 405,
+											"character": 10
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 131,
+									"name": "maxFileSize",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 408,
+											"character": 13
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 130,
+									"name": "maxFilesPerDir",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 407,
+											"character": 16
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 129,
+									"name": "maxSubFolders",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 406,
+											"character": 15
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 132,
+									"name": "randomize",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 409,
+											"character": 11
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "false"
+											},
+											{
+												"type": "intrinsic",
+												"name": "true"
+											}
+										]
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										128,
+										131,
+										130,
+										129,
+										132
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 404,
+									"character": 37
+								}
+							]
+						}
+					},
+					{
+						"type": "reference",
+						"id": 115,
+						"name": "TempDirOptions"
+					}
+				]
+			}
+		},
+		{
+			"id": 122,
+			"name": "tempDir",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"comment": {
+				"shortText": "This is a rewrite of the GoLang [os.TempDir](https://golang.org/pkg/io/ioutil/#TempDir) method, with additional\nfunctionality.",
+				"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n",
+				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+			},
+			"signatures": [
+				{
+					"id": 123,
+					"name": "tempDir",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "This is a rewrite of the GoLang [os.TempDir](https://golang.org/pkg/io/ioutil/#TempDir) method, with additional\nfunctionality.",
+						"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n",
+						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+					},
+					"parameters": [
+						{
+							"id": 124,
+							"name": "options",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 115,
+								"name": "TempDirOptions"
+							}
+						},
+						{
+							"id": 125,
+							"name": "callback",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 110,
+								"name": "TempDirValidationCallback"
+							}
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								],
+								"name": "Promise"
+							},
+							{
+								"type": "intrinsic",
+								"name": "void"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 368,
+					"character": 20
+				}
+			]
+		},
+		{
+			"id": 138,
+			"name": "tempDirWithFiles",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"comment": {
+				"shortText": "`tempDirWithFiles` creates a new temporary directory in the directory dir. New directory will recursively contain\nother a max of `options.maxSubFolders` (can be randomized) directories to max depth of `options.maxDepth` (can\nbe randomized). Also, each folder will contain a maximum number of `options.maxFilesPerDir` (can be randomized),\neach file having the max size of `options.maxFileSize` (can be randomized).\nTo randomize values, set `options.randomize` to true.",
+				"text": "For the main parent folder, function will also inherit the parameters of `tempDir`.\n\nWill return a touple of values where:\n- 1st is the path of the parent folder\n- 2nd is a list of all created folders, including parent folder\n- 3rd is a list of all created files\n",
+				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+			},
+			"signatures": [
+				{
+					"id": 139,
+					"name": "tempDirWithFiles",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "`tempDirWithFiles` creates a new temporary directory in the directory dir. New directory will recursively contain\nother a max of `options.maxSubFolders` (can be randomized) directories to max depth of `options.maxDepth` (can\nbe randomized). Also, each folder will contain a maximum number of `options.maxFilesPerDir` (can be randomized),\neach file having the max size of `options.maxFileSize` (can be randomized).\nTo randomize values, set `options.randomize` to true.",
+						"text": "For the main parent folder, function will also inherit the parameters of `tempDir`.\n\nWill return a touple of values where:\n- 1st is the path of the parent folder\n- 2nd is a list of all created folders, including parent folder\n- 3rd is a list of all created files\n",
+						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+					},
+					"parameters": [
+						{
+							"id": 140,
+							"name": "options",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 126,
+								"name": "tempDirWithFilesOptions"
+							}
+						},
+						{
+							"id": 141,
+							"name": "callback",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 133,
+								"name": "TempDirWithFilesValidationCallback"
+							}
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										]
+									}
+								],
+								"name": "Promise"
+							},
+							{
+								"type": "intrinsic",
+								"name": "void"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 432,
+					"character": 29
+				}
+			]
+		},
+		{
+			"id": 99,
+			"name": "tempFile",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"comment": {
+				"shortText": "This is a rewrite of the GoLang [os.TempFile](https://golang.org/pkg/io/ioutil/#TempFile) method, with additional\nfunctionality.",
+				"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\ntempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\ntempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\ntempFile({ patern: 'tempjs_*.txt' })\n```\n",
+				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+			},
+			"signatures": [
+				{
+					"id": 100,
+					"name": "tempFile",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "This is a rewrite of the GoLang [os.TempFile](https://golang.org/pkg/io/ioutil/#TempFile) method, with additional\nfunctionality.",
+						"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\ntempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\ntempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\ntempFile({ patern: 'tempjs_*.txt' })\n```\n",
+						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+					},
+					"parameters": [
+						{
+							"id": 101,
+							"name": "options",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "Optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 91,
+								"name": "TempFileOptions"
+							}
+						},
+						{
+							"id": 102,
+							"name": "callback",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "Optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 94,
+								"name": "TempFileValidationCallback"
+							}
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 1,
+										"name": "FileHandle"
+									}
+								],
+								"name": "Promise"
+							},
+							{
+								"type": "intrinsic",
+								"name": "void"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 240,
+					"character": 21
+				}
+			]
+		},
+		{
+			"id": 106,
+			"name": "tempFileOfSize",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"comment": {
+				"shortText": "tempFileOfSize behaves exactly like `tempFile`, however it will write random data in the file, of a mentioned size.\nIt is developer's responsibility to make sure size input is correct. See: https://www.npmjs.com/package/bytes for\nbehavior. File's write/read cursor will be at the end of file.",
+				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+			},
+			"signatures": [
+				{
+					"id": 107,
+					"name": "tempFileOfSize",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "tempFileOfSize behaves exactly like `tempFile`, however it will write random data in the file, of a mentioned size.\nIt is developer's responsibility to make sure size input is correct. See: https://www.npmjs.com/package/bytes for\nbehavior. File's write/read cursor will be at the end of file.",
+						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
+					},
+					"parameters": [
+						{
+							"id": 108,
+							"name": "options",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "Optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 103,
+								"name": "TempFileOfSizeOptions"
+							}
+						},
+						{
+							"id": 109,
+							"name": "callback",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "Optional"
+							},
+							"type": {
+								"type": "reference",
+								"id": 94,
+								"name": "TempFileValidationCallback"
+							}
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 1,
+										"name": "FileHandle"
+									}
+								],
+								"name": "Promise"
+							},
+							{
+								"type": "intrinsic",
+								"name": "void"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 288,
+					"character": 27
+				}
+			]
+		},
+		{
+			"id": 118,
+			"name": "defaultTempDirOptions",
+			"kind": 2097152,
+			"kindString": "Object literal",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"children": [
+				{
+					"id": 119,
+					"name": "default",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 345,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "false"
+				},
+				{
+					"id": 120,
+					"name": "dir",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 346,
+							"character": 5
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"defaultValue": "os.tmpdir()"
+				},
+				{
+					"id": 121,
+					"name": "pattern",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 347,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"defaultValue": "\"\""
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						119,
+						120,
+						121
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 344,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "object"
+			}
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"kind": 128,
+			"children": [
+				1
+			]
+		},
+		{
+			"title": "Interfaces",
+			"kind": 256,
+			"children": [
+				91
+			]
+		},
+		{
+			"title": "Type aliases",
+			"kind": 4194304,
+			"children": [
+				115,
+				110,
+				133,
+				103,
+				94,
+				126
+			]
+		},
+		{
+			"title": "Functions",
+			"kind": 64,
+			"children": [
+				122,
+				138,
+				99,
+				106
+			]
+		},
+		{
+			"title": "Object literals",
+			"kind": 2097152,
+			"children": [
+				118
+			]
+		}
+	]
+}

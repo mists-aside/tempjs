@@ -10,23 +10,58 @@ import crs from 'crypto-random-string';
 
 import * as shortid from 'shortid';
 
+/**
+ * Enhancement of the [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle), which is a wrapper
+ * for a numeric file descriptor. Instances of FileHandle are distinct from numeric file descriptors in that they
+ * provide an object oriented API for working with files.
+ *
+ * Read more about FileHandles at [NodeJs.org](https://nodejs.org/api/fs.html#fs_class_filehandle)
+ */
 export class FileHandle implements fs.promises.FileHandle {
+  /**
+   * Constructor of the FileHandle. Private. Use `create()` method instead.
+   *
+   * @param filename Name of created file
+   * @param filehandle NodeJs stored [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle)
+   * @param fd See [fs.promises.FileHandle.fd](https://nodejs.org/api/fs.html#fs_filehandle_fd)
+   */
   private constructor(private filename: string, private filehandle: fs.promises.FileHandle, public fd: number) {}
 
+  /**
+   * Asynchronous file create that returns a Promise that, when resolved, yields a FileHandle object.
+   *
+   * File will be created and opened with 'w+' flag
+   * (see [support of file system flags](https://nodejs.org/api/fs.html#fs_file_system_flags)) and 0o666 mode.
+   *
+   * ``` typescript
+   * const fh = FileHandle.create('/tmp/new-file.txt')
+   * ```
+   *
+   * @param filename Name of the file to create.
+   */
   public static async create(filename: string): Promise<FileHandle> {
     const filehandle = await fs.promises.open(filename, 'w+');
     const fh = new FileHandle(filename, filehandle, filehandle.fd);
     return fh;
   }
 
+  /**
+   * Returns the default Nodejs [fs.promises.FileHandle](https://nodejs.org/api/fs.html#fs_class_filehandle) instance.
+   */
   get fileHanle(): fs.promises.FileHandle {
     return this.filehandle;
   }
 
+  /**
+   * Returns the name of the created/opened file.
+   */
   get name(): string {
     return this.filename;
   }
 
+  /**
+   * See [fs.promises.FileHandle.appendFile()](https://nodejs.org/api/fs.html#fs_filehandle_appendfile_data_options)
+   */
   appendFile(
     data: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     options?: {encoding?: string | null; mode?: string | number; flag?: string | number} | string | null,
@@ -34,22 +69,37 @@ export class FileHandle implements fs.promises.FileHandle {
     return this.filehandle.appendFile(data, options);
   }
 
-  chown(uid: number, gid: number): Promise<void> {
-    return this.filehandle.chown(uid, gid);
-  }
-
+  /**
+   * See [fs.promises.FileHandle.chmod()](https://nodejs.org/api/fs.html#fs_filehandle_chmod_mode)
+   */
   chmod(mode: string | number): Promise<void> {
     return this.filehandle.chmod(mode);
   }
 
+  /**
+   * See [fs.promises.FileHandle.chown()](https://nodejs.org/api/fs.html#fs_filehandle_chown_uid_gid)
+   */
+  chown(uid: number, gid: number): Promise<void> {
+    return this.filehandle.chown(uid, gid);
+  }
+
+  /**
+   * See [fs.promises.FileHandle.close()](https://nodejs.org/api/fs.html#fs_filehandle_close)
+   */
+  close(): Promise<void> {
+    return this.filehandle.close();
+  }
+
+  /**
+   * See [fs.promises.FileHandle.datasync()](https://nodejs.org/api/fs.html#fs_filehandle_datasync)
+   */
   datasync(): Promise<void> {
     return this.filehandle.datasync();
   }
 
-  sync(): Promise<void> {
-    return this.filehandle.sync();
-  }
-
+  /**
+   * See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_read_buffer_offset_length_position)
+   */
   read<TBuffer extends Uint8Array>(
     buffer: TBuffer,
     offset?: number | null,
@@ -59,24 +109,53 @@ export class FileHandle implements fs.promises.FileHandle {
     return this.filehandle.read(buffer, offset, length, position);
   }
 
+  /**
+   * See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)
+   */
   readFile(options?: {encoding?: null | BufferEncoding; flag?: string | number} | null): Promise<Buffer>;
   readFile(options: {encoding: BufferEncoding; flag?: string | number} | BufferEncoding): Promise<string>;
   readFile(options?: {encoding?: string | null; flag?: string | number} | string | null): Promise<string | Buffer> {
     return this.filehandle.readFile(options);
   }
 
+  /**
+   * See [fs.promises.FileHandle.readv()](https://nodejs.org/api/fs.html#fs_filehandle_readv_buffers_position)
+   */
+  readv(buffers: NodeJS.ArrayBufferView[], position?: number): Promise<fs.ReadVResult> {
+    return this.filehandle.readv(buffers, position);
+  }
+
+  /**
+   * See [fs.promises.FileHandle.stat()](https://nodejs.org/api/fs.html#fs_filehandle_stat_options)
+   */
   stat(): Promise<fs.Stats> {
     return this.filehandle.stat();
   }
 
+  /**
+   * See [fs.promises.FileHandle.sync()](https://nodejs.org/api/fs.html#fs_filehandle_sync)
+   */
+  sync(): Promise<void> {
+    return this.filehandle.sync();
+  }
+
+  /**
+   * See [fs.promises.FileHandle.truncate()](https://nodejs.org/api/fs.html#fs_filehandle_sync)
+   */
   truncate(len?: number): Promise<void> {
     return this.filehandle.truncate(len);
   }
 
+  /**
+   * See [fs.promises.FileHandle.utimes()](https://nodejs.org/api/fs.html#fs_filehandle_utimes_atime_mtime)
+   */
   utimes(atime: string | number | Date, mtime: string | number | Date): Promise<void> {
     return this.filehandle.utimes(atime, mtime);
   }
 
+  /**
+   * See [fs.promises.FileHandle.write()](https://nodejs.org/api/fs.html#fs_filehandle_write_string_position_encoding)
+   */
   // write<TBuffer extends Uint8Array>(buffer: TBuffer, offset?: number | null, length?: number | null, position?: number | null): Promise<{ bytesWritten: number, buffer: TBuffer }>;
   // write(data: any, position?: number | null, encoding?: string | null): Promise<{ bytesWritten: number, buffer: string }>;
   write(
@@ -86,6 +165,9 @@ export class FileHandle implements fs.promises.FileHandle {
     return this.filehandle.write(data, ...args);
   }
 
+  /**
+   * See [fs.promises.FileHandle.writeFile()](https://nodejs.org/api/fs.html#fs_filehandle_writefile_data_options)
+   */
   writeFile(
     data: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     options?: {encoding?: string | null; mode?: string | number; flag?: string | number} | string | null,
@@ -93,32 +175,35 @@ export class FileHandle implements fs.promises.FileHandle {
     return this.filehandle.writeFile(data, options);
   }
 
+  /**
+   * See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_writev_buffers_position)
+   */
   writev(buffers: NodeJS.ArrayBufferView[], position?: number): Promise<fs.WriteVResult> {
     return this.writev(buffers, position);
   }
-
-  readv(buffers: NodeJS.ArrayBufferView[], position?: number): Promise<fs.ReadVResult> {
-    return this.filehandle.readv(buffers, position);
-  }
-
-  close(): Promise<void> {
-    return this.filehandle.close();
-  }
-
-  // /**
-  //  * Will remove the file. It's programmer's responsability to make sure file is closed.
-  //  */
-  // unlink(): Promise<void> {
-  //   return fs.promises.unlink(this.filename);
-  // }
 }
 
-export type ValidationCallback = (err: Error) => void;
-
+/**
+ * Callback method can be used by `tempFile` when you don't want to return a Promise.
+ *
+ * @param err Error returned by `tempFile` call
+ * @param file `FileHandle` returned by `tempFile` call
+ */
 export type TempFileValidationCallback = (err: Error | null, file?: FileHandle) => void;
 
+/**
+ * Options used by `tempFile` call, see description of the method.
+ */
 export interface TempFileOptions {
+  /**
+   * Path to the temporary location you wish to use.
+   * If not mentioned, `[os.tmpdir()](https://nodejs.org/api/os.html#os_os_tmpdir)` will be used.
+   */
   dir?: string;
+  /**
+   * Pattern used for generating the file name. If "*" is present in the given pattern, it will be replaced wotj the
+   * unique token value; otherwise the unique token value will be added to the end of the pattern name.
+   */
   pattern?: string;
 }
 
@@ -132,6 +217,21 @@ export interface TempFileOptions {
  * default directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously
  * will not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's
  * responsibility to remove the file when no longer needed.
+ *
+ * ```
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token as filename
+ * const fh = tempFile()
+ *
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token prefixed by 'tempjs_' as filename
+ * const fh = tempFile({ patern: 'tempjs_' })
+ *
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token prefixed by 'tempjs_' and
+ * // suffixed by '.txt' as filename
+ * const fh = tempFile({ patern: 'tempjs_*.txt' })
+ * ```
  *
  * @param {TempFileOptions} options Optional
  * @param {TempValidationCallback} callback Optional
@@ -160,7 +260,14 @@ export const tempFile = (
   promise.then((fileHandler) => callback(null, fileHandler)).catch(callback);
 };
 
+/**
+ * Options used by `tempFileOfSize` call, see description of the method.
+ */
 export type TempFileOfSizeOptions = {
+  /**
+   * Size of the created file defined as a string representing a number followe by the 'b', 'Kb', 'Mb', 'Gb', 'Tb',
+   * 'Pb' sufixes.
+   */
   size: string;
 } & TempFileOptions;
 
@@ -168,6 +275,11 @@ export type TempFileOfSizeOptions = {
  * tempFileOfSize behaves exactly like `tempFile`, however it will write random data in the file, of a mentioned size.
  * It is developer's responsibility to make sure size input is correct. See: https://www.npmjs.com/package/bytes for
  * behavior. File's write/read cursor will be at the end of file.
+ *
+ * ```javascript
+ * // will create a temporary file of 50Mb
+ * const fh = tempFileOfSize({ size: '50Mb' })
+ * ```
  *
  * @param {TempFileOfSizeOptions} options Optional
  * @param {TempValidationCallback} callback Optional
@@ -225,9 +337,25 @@ export const tempFileOfSize = (
   /* eslint-enable @typescript-eslint/no-non-null-assertion */
 };
 
+/**
+ * Callback method can be used by `tempDir` when you don't want to return a Promise.
+ *
+ * @param err Error returned by `tempDir` call
+ * @param name directory path returned by `tempDir` call
+ */
 export type TempDirValidationCallback = (err: Error | null, name?: string) => void;
 
-export type TempDirOptions = {default?: boolean} & TempFileOptions;
+/**
+ * Options used by `tempDir` to create a temporary directory
+ */
+export type TempDirOptions = {
+  /**
+   * Let `tempDir` method know whether to use the NodeJs defined
+   * [fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, or not.
+   * Default false.
+   */
+  default?: boolean;
+} & TempFileOptions;
 
 const defaultTempDirOptions = {
   default: false,
@@ -248,6 +376,21 @@ const defaultTempDirOptions = {
  * If `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's
  * [fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as
  * `prefix` the `options.pattern` value (which becomes mandatory).
+ *
+ * ```
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token as filename
+ * const fh = tempDir()
+ *
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token prefixed by 'tempjs_' as filename
+ * const fh = tempDir({ patern: 'tempjs_' })
+ *
+ * // will create a temporary file using the OS temporary
+ * // folder and a random token prefixed by 'tempjs_' and
+ * // suffixed by '.txt' as filename
+ * const fh = tempDir({ patern: 'tempjs_*.txt' })
+ * ```
  *
  * @param {TempDirOptions} options optional
  * @param {TempDirValidationCallback} callback optional
@@ -289,6 +432,15 @@ export const tempDir = (options?: TempDirOptions, callback?: TempDirValidationCa
   promise.then((dirName) => callback(null, dirName)).catch(callback);
 };
 
+/**
+ * Callback method can be used by `tempDirWithFiles` when you don't want to return a Promise.
+ *
+ * @param err Error returned by `tempDir` call
+ * @param data returning a touple of temporary folder name, list of all subfolders includind the main folder,
+ *             a list of all created files
+ */
+export type TempDirWithFilesValidationCallback = (err: Error | null, data?: [string, string[], string[]]) => void;
+
 export type tempDirWithFilesOptions = {
   maxDepth?: number;
   maxSubFolders?: number;
@@ -296,8 +448,6 @@ export type tempDirWithFilesOptions = {
   maxFileSize?: string;
   randomize?: boolean;
 } & TempDirOptions;
-
-export type TempDirWithFilesValidationCallback = (err: Error | null, data?: [string, string[], string[]]) => void;
 
 /**
  * `tempDirWithFiles` creates a new temporary directory in the directory dir. New directory will recursively contain

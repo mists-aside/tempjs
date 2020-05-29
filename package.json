@@ -1,11 +1,15 @@
 {
-  "name": "template-javascript",
+  "name": "@mists/temp",
   "version": "0.0.1",
-  "description": "Javascript Project Template",
-  "main": "dist/index.js",
+  "description": "Operating System Based Temporary Files and Folders",
+  "main": "dist/commonjs/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c --environment NODE_ENV:production",
+    "predoc": "rimraf doc",
+    "doc": "npx typedoc --out doc --json doc.json --readme none --theme minimal --mode file src",
+    "doc:watch": "nodemon --exec 'npm run doc'",
     "prettier": "prettier \"{src,test}/**/*.ts\"",
     "prettier:check": "npm run prettier -- --list-different",
     "prettier:write": "npm run prettier -- --write",
@@ -24,14 +28,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dragoscirjan/template-javascript.git"
+    "url": "https://github.com/mists-aside/tempjs.git"
   },
   "author": "Dragos Cirjan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dragoscirjan/template-javascript/issues"
+    "url": "https://github.com/mists-aside/tempjs/issues"
   },
-  "homepage": "https://github.com/dragoscirjan/template-javascript#readme",
+  "homepage": "https://github.com/mists-aside/tempjs#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
@@ -64,6 +68,7 @@
     "rollup-plugin-dts": "^1.4.7",
     "rollup-plugin-typescript2": "^0.27.1",
     "ts-node": "^8.10.1",
+    "typedoc": "^0.17.7",
     "typescript": "^3.8.3",
     "yorkie": "^2.0.0"
   },

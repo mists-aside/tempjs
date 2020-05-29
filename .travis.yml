@@ -20,8 +20,8 @@ before_script:
 scripts:
   - npm run test
   - npm run build
-# after_script:
-#   - test $TRAVIS_NODE_VERSION == '12' && sonar-scanner
+after_script:
+  - test $TRAVIS_NODE_VERSION == '12' && test $TRAVIS_OS_NAME == 'linux' && sonar-scanner
 notifications:
   email:
     recipients:
