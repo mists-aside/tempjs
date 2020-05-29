@@ -473,9 +473,9 @@ export const tempDirWithFiles = (
 ): Promise<[string, string[], string[]]> | void => {
   const localOptions = {
     ...defaultTempDirOptions,
-    maxDepth: 5,
-    maxSubFolders: 5,
-    maxFilesPerDir: 5,
+    maxDepth: 3,
+    maxSubFolders: 3,
+    maxFilesPerDir: 3,
     maxFileSize: '10Mb',
     randomize: false,
     ...(options || {}),

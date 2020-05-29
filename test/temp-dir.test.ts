@@ -9,6 +9,14 @@ import {expect} from 'chai';
 import {tempDir, tempDirWithFiles} from '../src/index';
 import rimraf from 'rimraf';
 
+const powSum = (n = 3, x = 3): number => {
+  let sum = 0;
+  for (let i = 0; i <= n; i++) {
+    sum += Math.pow(x, i);
+  }
+  return sum;
+};
+
 describe('Folder', () => {
   describe('tempDir', function () {
     let name: string | undefined = undefined;
@@ -122,7 +130,9 @@ describe('Folder', () => {
       }
     });
 
-    it(`calling tempDirWithFiles() should create a directory in ${os.tmpdir()} with 781 folders and 3905 files`, async () => {
+    it(`calling tempDirWithFiles() should create a directory in ${os.tmpdir()} with ${powSum(2)} folders and ${
+      powSum(3) - 1
+    } files`, async () => {
       const promise = tempDirWithFiles({
         maxFileSize: '100b',
         pattern: 'tempjs-*',
@@ -143,16 +153,16 @@ describe('Folder', () => {
         expect(stat.size).to.equal(bytes('100b'));
       }
 
-      expect(dwfResult[1].length).to.equal(
-        1 + Math.pow(5, 1) + Math.pow(5, 2) + Math.pow(5, 3) + Math.pow(5, 4), // + Math.pow(5, 5), // i start from depth 1
-      );
+      // console.log(dwfResult);
 
-      expect(dwfResult[2].length).to.equal(
-        Math.pow(5, 1) + Math.pow(5, 2) + Math.pow(5, 3) + Math.pow(5, 4) + Math.pow(5, 5),
-      );
+      expect(dwfResult[1].length).to.equal(powSum(2));
+
+      expect(dwfResult[2].length).to.equal(powSum(3) - 1);
     });
 
-    it(`calling tempDirWithFiles({}, callback) should create an empty directory in ${os.tmpdir()} with 781 folders and 3905 files`, (done) => {
+    it(`calling tempDirWithFiles({}, callback) should create an empty directory in ${os.tmpdir()} with ${powSum(
+      2,
+    )} folders and ${powSum(3) - 1} files`, (done) => {
       const promise = tempDirWithFiles(
         {
           maxFileSize: '100b',
@@ -167,13 +177,9 @@ describe('Folder', () => {
           /* eslint-disable @typescript-eslint/no-non-null-assertion */
           expect(dwfResult![0].indexOf(os.tmpdir())).to.equal(0);
 
-          expect(dwfResult![1].length).to.equal(
-            1 + Math.pow(5, 1) + Math.pow(5, 2) + Math.pow(5, 3) + Math.pow(5, 4), // + Math.pow(5, 5), // i start from depth 1
-          );
+          expect(dwfResult![1].length).to.equal(powSum(2));
 
-          expect(dwfResult![2].length).to.equal(
-            Math.pow(5, 1) + Math.pow(5, 2) + Math.pow(5, 3) + Math.pow(5, 4) + Math.pow(5, 5),
-          );
+          expect(dwfResult![2].length).to.equal(powSum(3) - 1);
           /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
           done();
@@ -183,7 +189,9 @@ describe('Folder', () => {
       expect(promise).to.be.undefined;
     });
 
-    it(`calling tempDirWithFiles({randomize: true}) should create a directory in ${os.tmpdir()} with less than 781 folders and less than 3905 files`, async () => {
+    it(`calling tempDirWithFiles({randomize: true}) should create a directory in ${os.tmpdir()} with less than ${powSum(
+      2,
+    )} folders and less than ${powSum(3) - 1} files`, async () => {
       const promise = tempDirWithFiles({
         maxFileSize: '100b',
         pattern: 'tempjs-*',
@@ -205,17 +213,9 @@ describe('Folder', () => {
         expect(stat.size).to.lessThan(bytes('100b'));
       }
 
-      expect(dwfResult[1].length).to.be.lessThan(
-        1 +
-          Math.pow(5, 1) +
-          Math.pow(5, 2) +
-          Math.pow(5, 3) +
-          Math.pow(5, 4) /* + Math.pow(5, 5), /* i start from depth 1 */,
-      );
+      expect(dwfResult[1].length).to.be.lessThan(powSum(2));
 
-      expect(dwfResult[2].length).to.be.lessThan(
-        Math.pow(5, 1) + Math.pow(5, 2) + Math.pow(5, 3) + Math.pow(5, 4) + Math.pow(5, 5),
-      );
+      expect(dwfResult[2].length).to.be.lessThan(powSum(3) - 1);
     });
   });
 });
