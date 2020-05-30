@@ -158,7 +158,7 @@ describe('Folder', () => {
       expect(dwfResult[2].length).to.equal(fileCount);
     });
 
-    it(`calling tempDirWithFiles({}, callback) should create an empty directory in ${os.tmpdir()} with ${folderCount} folders and ${fileCount} files`, (done) => {
+    it(`calling tempDirWithFiles({}, callback) should create a directory in ${os.tmpdir()} with ${folderCount} folders and ${fileCount} files`, (done) => {
       const promise = tempDirWithFiles(
         {
           maxFileSize: '100b',

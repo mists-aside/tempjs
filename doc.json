@@ -2131,10 +2131,13 @@
 			"flags": {
 				"isExported": true
 			},
+			"comment": {
+				"shortText": "Options used by `tempDir` to create a temporary directory"
+			},
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 342,
+					"line": 351,
 					"character": 26
 				}
 			],
@@ -2161,11 +2164,14 @@
 										"isExported": true,
 										"isOptional": true
 									},
+									"comment": {
+										"shortText": "Let `tempDir` method know whether to use the NodeJs defined\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, or not.\nDefault false."
+									},
 									"sources": [
 										{
 											"fileName": "index.ts",
-											"line": 342,
-											"character": 37
+											"line": 357,
+											"character": 9
 										}
 									],
 									"type": {
@@ -2199,7 +2205,7 @@
 							"sources": [
 								{
 									"fileName": "index.ts",
-									"line": 342,
+									"line": 351,
 									"character": 28
 								}
 							]
@@ -2221,10 +2227,25 @@
 			"flags": {
 				"isExported": true
 			},
+			"comment": {
+				"shortText": "Callback method can be used by `tempDir` when you don't want to return a Promise.",
+				"tags": [
+					{
+						"tag": "param",
+						"text": "Error returned by `tempDir` call",
+						"param": "err"
+					},
+					{
+						"tag": "param",
+						"text": "directory path returned by `tempDir` call\n",
+						"param": "name"
+					}
+				]
+			},
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 340,
+					"line": 346,
 					"character": 37
 				}
 			],
@@ -2303,7 +2324,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 340,
+							"line": 346,
 							"character": 39
 						}
 					]
@@ -2311,24 +2332,271 @@
 			}
 		},
 		{
-			"id": 133,
+			"id": 131,
+			"name": "TempDirWithFilesOptions",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Options used by `tempDir` to create a temporary directory with files"
+			},
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 447,
+					"character": 35
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 132,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"children": [
+								{
+									"id": 133,
+									"name": "maxDepth",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Max depth of the folder tree. Default: 3"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 451,
+											"character": 10
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 136,
+									"name": "maxFileSize",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Max size of the created files. Default: 10Mb"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 463,
+											"character": 13
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 135,
+									"name": "maxFilesPerDir",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Max files per each node. Default: 3"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 459,
+											"character": 16
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 134,
+									"name": "maxSubFolders",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Max subfolders per each node. Default: 3"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 455,
+											"character": 15
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 137,
+									"name": "randomize",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Randomize all values: `maxDepth`, `maxSubFolders`, `maxFilesPerDir`, `maxFileSize`. Default: false"
+									},
+									"sources": [
+										{
+											"fileName": "index.ts",
+											"line": 467,
+											"character": 11
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "false"
+											},
+											{
+												"type": "intrinsic",
+												"name": "true"
+											}
+										]
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										133,
+										136,
+										135,
+										134,
+										137
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 447,
+									"character": 37
+								}
+							]
+						}
+					},
+					{
+						"type": "reference",
+						"id": 115,
+						"name": "TempDirOptions"
+					}
+				]
+			}
+		},
+		{
+			"id": 126,
 			"name": "TempDirWithFilesValidationCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
 			"flags": {
 				"isExported": true
 			},
+			"comment": {
+				"shortText": "Callback method can be used by `tempDirWithFiles` when you don't want to return a Promise.",
+				"tags": [
+					{
+						"tag": "param",
+						"text": "Error returned by `tempDir` call",
+						"param": "err"
+					},
+					{
+						"tag": "param",
+						"text": "returning a touple of temporary folder name, list of all subfolders includind the main folder,\n            a list of all created files\n",
+						"param": "data"
+					}
+				]
+			},
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 412,
+					"line": 442,
 					"character": 46
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 134,
+					"id": 127,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -2337,7 +2605,7 @@
 					},
 					"signatures": [
 						{
-							"id": 135,
+							"id": 128,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2346,7 +2614,7 @@
 							},
 							"parameters": [
 								{
-									"id": 136,
+									"id": 129,
 									"name": "err",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2368,7 +2636,7 @@
 									}
 								},
 								{
-									"id": 137,
+									"id": 130,
 									"name": "data",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2410,7 +2678,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 412,
+							"line": 442,
 							"character": 48
 						}
 					]
@@ -2458,13 +2726,12 @@
 										"isExported": true
 									},
 									"comment": {
-										"shortText": "Size of the created file defined as a string representing a number followe by the 'b', 'Kb', 'Mb', 'Gb', 'Tb',\n'Pb' sufixes.",
-										"text": "```javascript\ntempFileOfSize({ size: '50Mb' })\n```\n"
+										"shortText": "Size of the created file defined as a string representing a number followe by the 'b', 'Kb', 'Mb', 'Gb', 'Tb',\n'Pb' sufixes."
 									},
 									"sources": [
 										{
 											"fileName": "index.ts",
-											"line": 276,
+											"line": 271,
 											"character": 6
 										}
 									],
@@ -2605,220 +2872,6 @@
 			}
 		},
 		{
-			"id": 126,
-			"name": "tempDirWithFilesOptions",
-			"kind": 4194304,
-			"kindString": "Type alias",
-			"flags": {
-				"isExported": true
-			},
-			"sources": [
-				{
-					"fileName": "index.ts",
-					"line": 404,
-					"character": 35
-				}
-			],
-			"type": {
-				"type": "intersection",
-				"types": [
-					{
-						"type": "reflection",
-						"declaration": {
-							"id": 127,
-							"name": "__type",
-							"kind": 65536,
-							"kindString": "Type literal",
-							"flags": {
-								"isExported": true
-							},
-							"children": [
-								{
-									"id": 128,
-									"name": "maxDepth",
-									"kind": 32,
-									"kindString": "Variable",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"sources": [
-										{
-											"fileName": "index.ts",
-											"line": 405,
-											"character": 10
-										}
-									],
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "undefined"
-											},
-											{
-												"type": "intrinsic",
-												"name": "number"
-											}
-										]
-									}
-								},
-								{
-									"id": 131,
-									"name": "maxFileSize",
-									"kind": 32,
-									"kindString": "Variable",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"sources": [
-										{
-											"fileName": "index.ts",
-											"line": 408,
-											"character": 13
-										}
-									],
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "undefined"
-											},
-											{
-												"type": "intrinsic",
-												"name": "string"
-											}
-										]
-									}
-								},
-								{
-									"id": 130,
-									"name": "maxFilesPerDir",
-									"kind": 32,
-									"kindString": "Variable",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"sources": [
-										{
-											"fileName": "index.ts",
-											"line": 407,
-											"character": 16
-										}
-									],
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "undefined"
-											},
-											{
-												"type": "intrinsic",
-												"name": "number"
-											}
-										]
-									}
-								},
-								{
-									"id": 129,
-									"name": "maxSubFolders",
-									"kind": 32,
-									"kindString": "Variable",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"sources": [
-										{
-											"fileName": "index.ts",
-											"line": 406,
-											"character": 15
-										}
-									],
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "undefined"
-											},
-											{
-												"type": "intrinsic",
-												"name": "number"
-											}
-										]
-									}
-								},
-								{
-									"id": 132,
-									"name": "randomize",
-									"kind": 32,
-									"kindString": "Variable",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"sources": [
-										{
-											"fileName": "index.ts",
-											"line": 409,
-											"character": 11
-										}
-									],
-									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "undefined"
-											},
-											{
-												"type": "intrinsic",
-												"name": "false"
-											},
-											{
-												"type": "intrinsic",
-												"name": "true"
-											}
-										]
-									}
-								}
-							],
-							"groups": [
-								{
-									"title": "Variables",
-									"kind": 32,
-									"children": [
-										128,
-										131,
-										130,
-										129,
-										132
-									]
-								}
-							],
-							"sources": [
-								{
-									"fileName": "index.ts",
-									"line": 404,
-									"character": 37
-								}
-							]
-						}
-					},
-					{
-						"type": "reference",
-						"id": 115,
-						"name": "TempDirOptions"
-					}
-				]
-			}
-		},
-		{
 			"id": 122,
 			"name": "tempDir",
 			"kind": 64,
@@ -2829,7 +2882,7 @@
 			},
 			"comment": {
 				"shortText": "This is a rewrite of the GoLang [os.TempDir](https://golang.org/pkg/io/ioutil/#TempDir) method, with additional\nfunctionality.",
-				"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n",
+				"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\nconst fh = tempDir()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\nconst fh = tempDir({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\nconst fh = tempDir({ patern: 'tempjs_*.txt' })\n```\n",
 				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 			},
 			"signatures": [
@@ -2843,7 +2896,7 @@
 					},
 					"comment": {
 						"shortText": "This is a rewrite of the GoLang [os.TempDir](https://golang.org/pkg/io/ioutil/#TempDir) method, with additional\nfunctionality.",
-						"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n",
+						"text": "`tempDir` creates a new temporary directory in the directory dir. The directory name is generated by taking\npattern and applying a random string to the end. If pattern includes a \"*\", the random string replaces the last \"*\".\n`tempDir` returns the name of the new directory. If dir is the empty string, `tempDir` uses the default directory for\ntemporary files (see os.tmpdir()). Multiple programs calling `tempDir` simultaneously will not choose the same\ndirectory. It is the caller's responsibility to remove the directory when no longer needed.\n\nIf `options.default` is set to `true` in the `options` argument, `tempDir` will make use of NodeJs's\n[fs.promises.mkdtemp](https://nodejs.org/api/fs.html#fs_fs_mkdtemp_prefix_options_callback) method, giving as\n`prefix` the `options.pattern` value (which becomes mandatory).\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\nconst fh = tempDir()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\nconst fh = tempDir({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\nconst fh = tempDir({ patern: 'tempjs_*.txt' })\n```\n",
 						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 					},
 					"parameters": [
@@ -2908,7 +2961,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 368,
+					"line": 399,
 					"character": 20
 				}
 			]
@@ -2956,8 +3009,8 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 126,
-								"name": "tempDirWithFilesOptions"
+								"id": 131,
+								"name": "TempDirWithFilesOptions"
 							}
 						},
 						{
@@ -2974,7 +3027,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 133,
+								"id": 126,
 								"name": "TempDirWithFilesValidationCallback"
 							}
 						}
@@ -3022,7 +3075,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 432,
+					"line": 488,
 					"character": 29
 				}
 			]
@@ -3038,7 +3091,7 @@
 			},
 			"comment": {
 				"shortText": "This is a rewrite of the GoLang [os.TempFile](https://golang.org/pkg/io/ioutil/#TempFile) method, with additional\nfunctionality.",
-				"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\ntempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\ntempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\ntempFile({ patern: 'tempjs_*.txt' })\n```\n",
+				"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\nconst fh = tempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\nconst fh = tempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\nconst fh = tempFile({ patern: 'tempjs_*.txt' })\n```\n",
 				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 			},
 			"signatures": [
@@ -3052,7 +3105,7 @@
 					},
 					"comment": {
 						"shortText": "This is a rewrite of the GoLang [os.TempFile](https://golang.org/pkg/io/ioutil/#TempFile) method, with additional\nfunctionality.",
-						"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\ntempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\ntempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\ntempFile({ patern: 'tempjs_*.txt' })\n```\n",
+						"text": "tempFile creates a new temporary file in the directory dir, opens the file for reading and writing, and returns the\nresulting `FileHandle`. The filename is generated by taking pattern and adding a random string to the end. If\npattern includes a \"*\", the random string replaces the last \"*\". If dir is the empty string, `tempFile` uses the\ndefault directory for temporary files (see `os.tmpdir()`). Multiple programs calling `tempFile` simultaneously\nwill not choose the same file. The caller can use f.name to find the pathname of the file. It is the caller's\nresponsibility to remove the file when no longer needed.\n\n```\n// will create a temporary file using the OS temporary\n// folder and a random token as filename\nconst fh = tempFile()\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' as filename\nconst fh = tempFile({ patern: 'tempjs_' })\n\n// will create a temporary file using the OS temporary\n// folder and a random token prefixed by 'tempjs_' and\n// suffixed by '.txt' as filename\nconst fh = tempFile({ patern: 'tempjs_*.txt' })\n```\n",
 						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 					},
 					"parameters": [
@@ -3134,6 +3187,7 @@
 			},
 			"comment": {
 				"shortText": "tempFileOfSize behaves exactly like `tempFile`, however it will write random data in the file, of a mentioned size.\nIt is developer's responsibility to make sure size input is correct. See: https://www.npmjs.com/package/bytes for\nbehavior. File's write/read cursor will be at the end of file.",
+				"text": "```javascript\n// will create a temporary file of 50Mb\nconst fh = tempFileOfSize({ size: '50Mb' })\n```\n",
 				"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 			},
 			"signatures": [
@@ -3147,6 +3201,7 @@
 					},
 					"comment": {
 						"shortText": "tempFileOfSize behaves exactly like `tempFile`, however it will write random data in the file, of a mentioned size.\nIt is developer's responsibility to make sure size input is correct. See: https://www.npmjs.com/package/bytes for\nbehavior. File's write/read cursor will be at the end of file.",
+						"text": "```javascript\n// will create a temporary file of 50Mb\nconst fh = tempFileOfSize({ size: '50Mb' })\n```\n",
 						"returns": "Returns Promise if callback is not defined, void if callback is defined.\n"
 					},
 					"parameters": [
@@ -3237,7 +3292,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 345,
+							"line": 361,
 							"character": 9
 						}
 					],
@@ -3258,7 +3313,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 346,
+							"line": 362,
 							"character": 5
 						}
 					],
@@ -3279,7 +3334,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 347,
+							"line": 363,
 							"character": 9
 						}
 					],
@@ -3304,7 +3359,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 344,
+					"line": 360,
 					"character": 27
 				}
 			],
@@ -3335,10 +3390,10 @@
 			"children": [
 				115,
 				110,
-				133,
+				131,
+				126,
 				103,
-				94,
-				126
+				94
 			]
 		},
 		{

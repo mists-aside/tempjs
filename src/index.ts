@@ -441,11 +441,29 @@ export const tempDir = (options?: TempDirOptions, callback?: TempDirValidationCa
  */
 export type TempDirWithFilesValidationCallback = (err: Error | null, data?: [string, string[], string[]]) => void;
 
-export type tempDirWithFilesOptions = {
+/**
+ * Options used by `tempDir` to create a temporary directory with files
+ */
+export type TempDirWithFilesOptions = {
+  /**
+   * Max depth of the folder tree. Default: 3
+   */
   maxDepth?: number;
+  /**
+   * Max subfolders per each node. Default: 3
+   */
   maxSubFolders?: number;
+  /**
+   * Max files per each node. Default: 3
+   */
   maxFilesPerDir?: number;
+  /**
+   * Max size of the created files. Default: 10Mb
+   */
   maxFileSize?: string;
+  /**
+   * Randomize all values: `maxDepth`, `maxSubFolders`, `maxFilesPerDir`, `maxFileSize`. Default: false
+   */
   randomize?: boolean;
 } & TempDirOptions;
 
@@ -468,7 +486,7 @@ export type tempDirWithFilesOptions = {
  * @returns {Promise<[string, string[], string[]]>|void} Returns Promise if callback is not defined, void if callback is defined.
  */
 export const tempDirWithFiles = (
-  options?: tempDirWithFilesOptions,
+  options?: TempDirWithFilesOptions,
   callback?: TempDirWithFilesValidationCallback,
 ): Promise<[string, string[], string[]]> | void => {
   const localOptions = {
