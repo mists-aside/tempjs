@@ -492,13 +492,15 @@ export const tempDirWithFiles = (
       maxDepth = Math.floor(Math.random() * 100) % localOptions.maxDepth;
     }
 
-    const re = new RegExp(`^${path.sep}+`, 'ig');
     for (let depth = 1; depth <= maxDepth; depth++) {
       // obtain the set of folders with a specific depth
       const pathsOfDepth = paths.filter(
-        (p) => p.replace(localOptions.dir, '').replace(re, '').split(path.sep).length === depth,
+        (p) =>
+          p
+            .replace(localOptions.dir, '')
+            .split(path.sep)
+            .filter((token) => token.length > 0).length === depth,
       );
-      console.log(re, paths[0].replace(re, ''));
       // on each new path, randomizing max number of subfolders
       let maxSubFolders = localOptions.maxSubFolders;
       if (localOptions.randomize) {

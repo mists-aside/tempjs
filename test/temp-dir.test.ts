@@ -118,6 +118,8 @@ describe('Folder', () => {
 
   describe('tempDirWithFiles', function () {
     let dwfResult: [string, string[], string[]] | undefined = undefined;
+    const folderCount = powSum(3);
+    const fileCount = powSum(4) - 1;
 
     // beforeEach(() => {});
 
@@ -130,9 +132,7 @@ describe('Folder', () => {
       }
     });
 
-    it(`calling tempDirWithFiles() should create a directory in ${os.tmpdir()} with ${powSum(2)} folders and ${
-      powSum(3) - 1
-    } files`, async () => {
+    it(`calling tempDirWithFiles() should create a directory in ${os.tmpdir()} with ${folderCount} folders and ${fileCount} files`, async () => {
       const promise = tempDirWithFiles({
         maxFileSize: '100b',
         pattern: 'tempjs-*',
@@ -153,16 +153,12 @@ describe('Folder', () => {
         expect(stat.size).to.equal(bytes('100b'));
       }
 
-      // console.log(dwfResult);
+      expect(dwfResult[1].length).to.equal(folderCount);
 
-      expect(dwfResult[1].length).to.equal(powSum(2));
-
-      expect(dwfResult[2].length).to.equal(powSum(3) - 1);
+      expect(dwfResult[2].length).to.equal(fileCount);
     });
 
-    it(`calling tempDirWithFiles({}, callback) should create an empty directory in ${os.tmpdir()} with ${powSum(
-      2,
-    )} folders and ${powSum(3) - 1} files`, (done) => {
+    it(`calling tempDirWithFiles({}, callback) should create an empty directory in ${os.tmpdir()} with ${folderCount} folders and ${fileCount} files`, (done) => {
       const promise = tempDirWithFiles(
         {
           maxFileSize: '100b',
@@ -177,9 +173,9 @@ describe('Folder', () => {
           /* eslint-disable @typescript-eslint/no-non-null-assertion */
           expect(dwfResult![0].indexOf(os.tmpdir())).to.equal(0);
 
-          expect(dwfResult![1].length).to.equal(powSum(2));
+          expect(dwfResult![1].length).to.equal(folderCount);
 
-          expect(dwfResult![2].length).to.equal(powSum(3) - 1);
+          expect(dwfResult![2].length).to.equal(fileCount);
           /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
           done();
@@ -189,9 +185,7 @@ describe('Folder', () => {
       expect(promise).to.be.undefined;
     });
 
-    it(`calling tempDirWithFiles({randomize: true}) should create a directory in ${os.tmpdir()} with less than ${powSum(
-      2,
-    )} folders and less than ${powSum(3) - 1} files`, async () => {
+    it(`calling tempDirWithFiles({randomize: true}) should create a directory in ${os.tmpdir()} with less than ${folderCount} folders and less than ${fileCount} files`, async () => {
       const promise = tempDirWithFiles({
         maxFileSize: '100b',
         pattern: 'tempjs-*',
@@ -213,9 +207,9 @@ describe('Folder', () => {
         expect(stat.size).to.lessThan(bytes('100b'));
       }
 
-      expect(dwfResult[1].length).to.be.lessThan(powSum(2));
+      expect(dwfResult[1].length).to.be.lessThan(folderCount);
 
-      expect(dwfResult[2].length).to.be.lessThan(powSum(3) - 1);
+      expect(dwfResult[2].length).to.be.lessThan(fileCount);
     });
   });
 });
