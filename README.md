@@ -1,6 +1,6 @@
-# Project Title
+# @mists/temp
 
-Set of shield/badges explaining where to find more information about the project (i.e. Where to look for unit test reports, where to see code coverage and code scans, etc.). You can find a lot of them on https://shields.io/)
+<!-- Set of shield/badges explaining where to find more information about the project (i.e. Where to look for unit test reports, where to see code coverage and code scans, etc.). You can find a lot of them on https://shields.io/) -->
 
 [![Npm Version](https://img.shields.io/npm/v/frameworks.svg)](https://www.npmjs.com/package/frameworks)
 [![Contributors](https://img.shields.io/github/contributors/mists-aside/tempjs)](https://img.shields.io/github/contributors/mists-aside/tempjs)
@@ -28,11 +28,11 @@ Set of shield/badges explaining where to find more information about the project
 [![Buy an item on our wishlist for us](https://img.shields.io/badge/wishlist-donate-yellow.svg)](https://dragoscirjan.me/wishlist)
 -->
 
-One Paragraph of project description goes here
+`@mists/temp` is a partial transpile of the GoLang `os` module, and can be used for generating temporary test files, directories or both.
 
 <!-- TOC -->
 
-- [Project Title](#project-title)
+- [@mists/temp](#miststemp)
   - [Getting Started](#getting-started)
     - [Installation](#installation)
       - [Code](#code)
@@ -59,12 +59,30 @@ npm i -D @mists/tempjs
 #### Code
 
 ```typescript
-import {FileHandle, tempFile, tempFileOfSize} from '@mists/tempjs';
+import {FileHandle, tempDir, tempDirWithFiles, tempFile, tempFileOfSize} from '@mists/tempjs';
+
+const dirPath = tempDir({
+  // ...
+}); // will create a temporary folder
+
+const [dirPath, dirs, files] = tempDirWithFiles({
+  // ...
+}); // will create a temporary directory, with multiple subfolerds and files
+
+const fh = tempFile({
+  // ...
+}); // will create a temporary file
+
+const fh = tempFileOfSize({
+  // ...
+  size: '20Mb'
+}); // will create a temporary file of 20Mb
+
 ```
 
 #### Documentation
 
-See documentation [here](/doc/doc.md)
+See [API documentation here](https://mists-aside.github.io/tempjs).
 
 ### Development
 
