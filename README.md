@@ -119,7 +119,7 @@ NPM publishing *~~is done~~* will be done automatically, through `.travis.yaml`.
 
 ## Authors
 
-- [Dragos Cirjan](mailto:dragos.cirjan@gmail.com) - Initial work - [96c401f](96c401f)
+- [Dragos Cirjan](mailto:dragos.cirjan@gmail.com) - Initial work - e3683b43282ee4b9d97cd941f2526135b8691d04
 
 See also the list of contributors who participated in this project.
 
