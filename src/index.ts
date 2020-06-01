@@ -112,11 +112,13 @@ export class FileHandle implements fs.promises.FileHandle {
   /**
    * See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)
    */
+  /* eslint-disable no-dupe-class-members */
   readFile(options?: {encoding?: null | BufferEncoding; flag?: string | number} | null): Promise<Buffer>;
   readFile(options: {encoding: BufferEncoding; flag?: string | number} | BufferEncoding): Promise<string>;
   readFile(options?: {encoding?: string | null; flag?: string | number} | string | null): Promise<string | Buffer> {
     return this.filehandle.readFile(options);
   }
+  /* eslint-enable no-dupe-class-members */
 
   /**
    * See [fs.promises.FileHandle.readv()](https://nodejs.org/api/fs.html#fs_filehandle_readv_buffers_position)
@@ -485,6 +487,7 @@ export type TempDirWithFilesOptions = {
  * @param {TempDirValidationCallback} callback optional
  * @returns {Promise<[string, string[], string[]]>|void} Returns Promise if callback is not defined, void if callback is defined.
  */
+/* eslint-disable no-async-promise-executor */
 export const tempDirWithFiles = (
   options?: TempDirWithFilesOptions,
   callback?: TempDirWithFilesValidationCallback,
@@ -571,3 +574,4 @@ export const tempDirWithFiles = (
 
   promise.then((result) => callback(null, result)).catch(callback);
 };
+/* eslint-enable no-async-promise-executor */
