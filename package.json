@@ -1,6 +1,6 @@
 {
   "name": "@mists/temp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Operating System Based Temporary Files and Folders",
   "main": "dist/commonjs/index.js",
   "types": "dist/index.d.ts",
