@@ -12,8 +12,8 @@ describe('File', () => {
   describe('tempFile', function () {
     let fh: FileHandle | undefined = undefined;
 
-    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_\-]+$/ : /\/test-[\w\d_\-]+$/;
-    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_\-]+\.txt$/ : /\/test-[\w\d_\-]+\.txt$/;
+    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_-]+$/ : /\/test-[\w\d_-]+$/;
+    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_-]+\.txt$/ : /\/test-[\w\d_-]+\.txt$/;
 
     // beforeEach(() => {});
 

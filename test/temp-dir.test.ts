@@ -21,8 +21,8 @@ describe('Folder', () => {
   describe('tempDir', function () {
     let name: string | undefined = undefined;
 
-    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_\-]+$/ : /\/test-[\w\d_\-]+$/;
-    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_\-]+-folder$/ : /\/test-[\w\d_\-]+-folder$/;
+    const reEnd = process.platform === 'win32' ? /\\test-[\w\d_-]+$/ : /\/test-[\w\d_-]+$/;
+    const reMatch = process.platform === 'win32' ? /\\test-[\w\d_-]+-folder$/ : /\/test-[\w\d_-]+-folder$/;
 
     // beforeEach(() => {});
 
