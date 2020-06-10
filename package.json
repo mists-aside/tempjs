@@ -42,6 +42,8 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/register": "^7.9.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/chai": "^4.2.11",
     "@types/crypto-random-string": "^2.0.0",
@@ -73,7 +75,8 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "npm run git-hook:pre-commit && git add ."
+    "pre-commit": "npm run git-hook:pre-commit && git add .",
+    "commit-msg": "commitlint -e -V"
   },
   "dependencies": {
     "@types/bytes": "^3.1.0",
