@@ -22,7 +22,7 @@
     "prerelease": "npm run build",
     "release": "release-it --ci --no-npm.publish",
     "test": "npm run test:single -- 'test/**/*.test.ts'",
-    "test:single": "nyc --reporter=html --reporter=text --extension .ts mocha --forbid-only",
+    "test:single": "nyc --reporter=html --reporter=lcov --reporter=text --extension .ts mocha --forbid-only",
     "test:junit": "npm run test -- --reporter mocha-junit-reporter --reporter-options mochaFile=.junit.xml",
     "test:watch": "nodemon --exec 'npm run test'"
   },
