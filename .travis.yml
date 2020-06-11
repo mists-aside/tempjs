@@ -1,16 +1,16 @@
 language: node_js
 os:
 - linux
-- osx
-- windows
+# - osx
+# - windows
 node_js:
-- '10'
-- '11'
+# - '10'
+# - '11'
 - '12'
-- '13'
-- '14'
-- lts/*
-- node
+# - '13'
+# - '14'
+# - lts/*
+# - node
 sudo: false
 cache:
   directories:
@@ -33,7 +33,7 @@ addons:
   sonarcloud:
     organization: mists-aside
     token:
-      secure: WlxoMMZGNpv/IQCqBXNLJClQkL2rseP8mclRRJh4N60bfhhsS58xwyh/KHUjpDN+7zZG/bP/v1L/1CDU7loLnsQPB2f8UeNecukaYx12dRixkKm2WiWXbQHDweZdFpDq/F5dqmbCsDC+LTmaBmhlddJCafXgXM8pVEXYAHZx6A+YluTDAOPE1MMEZlgpjB32sLnMFPiSeW2Ov9WtoTigIG2jpvoBXKJztcTXdn8QdKoxK+19nkReA3UxKHhajMt/xo9+85sqtRXyIumuk0x6iP0256SyjidOY/joQiD9GmmJLPILkWjEH/I6q0Z4eHutiGDwdZ2PCnmcF+cQB2qPssnl+JxHXQcKeFp05aa7GSDGyJezLCPbbX0c1tZZmHP/qKuwFyIK8QRbkwy9+7A5a2sY+YQOqZI8UO5kBmI9uEKF32ofIu/Nnz1BWobHcytWRclK34Cdd1MGFLRBA34j9TpiyuSIGG6bDxei+QVm80QF9MpX86kJm+Z9VoSL0VJZMs17osy1nF1xTBKlrEaOjA/BVRRzYoYvxF8XUFUd76FB5GrcGwNJD5V8C6G6Mn/ihF2SyQlOQkl3aAmuqY8pJIIFQLGhT1DD1p9UjB+h4TTlmq30lbMi9PPgQSzKihIm6/JVBLcoyuQZW4hNPKmYq6fa7/S2CfPMFi4pLwjVcDQ=
+      secure: esd7ImdbrV1ZKnjg0JxA96yAsQnYEg0SqwsieFex6QKDXRfRpDiocsAp2yyLroq2nirg5AvM+12Da0x86w4/mycrzvi2UNc3YZlUIgZ+xD6Sxem5tIXLJibVkZVKrF8kr2OT+GyHMrng0GbCYUHpMFLDIUKaMQu/vZp8bPCmsI7PBErcI9wjWzshdZg3My1438njol0fYx1whscaFoArigPMBiV/3bf6qbIMFbnj1VceyPdC90VOLTUOzsIVmOyNj0OGJcUMzh5IZCcac9HmQ3P/B1ZgUBfSu54LI7F2RANlmR3vVo7g0O/NRBdVKpf5s6HV7+nWk5Amd8XMwUw5fYFuoKRxo4mNVTJ6BgM2QigUD7TgwiQswKoEaW9B8z0DSrY0QF4RloHQ2lbf7QmD1PD4LmR0YrgOrnhEhISwoZkND+hk/XkqfdNXrJbQ/2YriutOAqGHrupNcKJRByXxBjkOzpumY8HA563NCX9nO2ikL00QGpcHYsf9e0+UhV4SgojWZ4NLYFEMDZZIuKxYa+sWJ/YsL7+CMhS3MbvDL88hAHI/xp7rj+OujJhkPcmDPi+rPQq7nRUrJ6xJtwJwT5v0DHsQT63ikI+vgvj+Ugd2klFoRBa5zWUP8AIX1s2eCVGbdjn+0ZyGxsmAZyYJUsNWJ7qcvcFByLI/6Llc5Ds=
 deploy:
   provider: script
   script: bash .scripts/npm-publish.sh
