@@ -5,7 +5,7 @@ os:
 # - windows
 node_js:
 # - '10'
-- '11'
+# - '11'
 - '12'
 # - '13'
 # - '14'
@@ -22,7 +22,7 @@ scripts:
 - npm run
 after_script:
 - if [[ $TRAVIS_NODE_VERSION == '12' ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then npm run docs; fi
-- if [[ $TRAVIS_NODE_VERSION == '12' ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then sonar-scanner; fi
+- if [[ $TRAVIS_NODE_VERSION == '12' ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then sonar-scanner -X; fi
 notifications:
   email:
     recipients:
