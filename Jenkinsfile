@@ -73,7 +73,7 @@ pipeline {
         branch 'develop';
       }
       steps {
-        NpmRelease(releaseArgs = '--preRelease=dev', credentialsId = '52e756f6-5625-41fb-bde9-ead983f84629')
+        NpmRelease(releaseArgs = '--preRelease=dev', credentialsId: '52e756f6-5625-41fb-bde9-ead983f84629')
 
         // sh "echo \"Commit Message: [${env.COMMIT_MESSAGE}]\""
         // script {
