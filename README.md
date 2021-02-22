@@ -54,7 +54,7 @@
 Use **npm** (or any other package manager) do add this module to your project.
 
 ```bash
-npm i -D @mists/tempjs
+npm i -D @mists/temp
 ```
 
 #### Code
