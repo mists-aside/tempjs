@@ -8,7 +8,7 @@ pipeline {
 
   environment {
     NVM_DIR = "${HOME}/.nvm"
-    NVM_LOAD = ". ~/.bashrc > /dev/null; set -ex; nmv use 12;"
+    NVM_LOAD = ". ~/.bashrc > /dev/null; set -ex; nvm use 12;"
   }
 
   stages {
@@ -47,7 +47,7 @@ pipeline {
         script {
           sh """
             ${NVM_LOAD}
-            npm run test
+            npm run test;
           """
         }
       }
