@@ -87,27 +87,11 @@ pipeline {
     // https://www.jenkins.io/doc/pipeline/tour/post/
     // https://plugins.jenkins.io/telegram-notifications/
     failure {
-      // withCredentials([
-      //   string(credentialsId: 'jk_pipeline_report_to_email', variable: 'TO_EMAIL')
-      // ]) {
-      //   mail to: "${TO_EMAIL}",
-      //       subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-      //       body: "Something is wrong with ${env.BUILD_URL}"
-      // }
-
       TelegramSendStatusFail('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
     }
     success {
       script {
-        // withCredentials([
-        //   string(credentialsId: 'jk_pipeline_report_to_email', variable: 'TO_EMAIL')
-        // ]) {
-        //   mail to: "${TO_EMAIL}",
-        //       subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-        //       body: "Build finished with success: ${env.BUILD_URL}"
-        // }
-
-      TelegramSendStatusOk('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
+        TelegramSendStatusOk('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
       }
     }
   }
