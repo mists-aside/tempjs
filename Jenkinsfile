@@ -53,27 +53,29 @@ pipeline {
       }
     }
 
-    stage('pre-release') {
-      when {
-        anyOf {
-          branch 'master';
-          branch 'develop';
-        }
-      }
-      steps {
-        script {
-          env.COMMIT_MESSAGE = GitLastCommitMessage()
-        }
-        sh "echo \"Commit Message: ${env.COMMIT_MESSAGE}\""
-      }
-    }
+    // stage('pre-release') {
+    //   when {
+    //     anyOf {
+    //       branch 'master';
+    //       branch 'develop';
+    //     }
+    //   }
+    //   steps {
+    //     script {
+    //       env.COMMIT_MESSAGE = GitLastCommitMessage()
+    //     }
+    //     sh "echo \"Commit Message: ${env.COMMIT_MESSAGE}\""
+    //   }
+    // }
 
     stage('release') {
       when {
-        branch 'master';
+        branch 'develop';
       }
       steps {
-        sh "echo \"Commit Message: [${env.COMMIT_MESSAGE}]\""
+        NpmRelease('--preRelease=dev')
+
+        // sh "echo \"Commit Message: [${env.COMMIT_MESSAGE}]\""
         // script {
         //   RELEASE_ARGS = (env.BRANCH_NAME == 'master' ? params.RELEASE_INC_ARGS : params.RELEASE_INC_ARGS_DEVELOP) + ' --no-git.requireUpstream --git.commitArgs=--no-verify'
         //   if (env.COMMIT_MESSAGE.indexOf("chore: release v") < 0) {
