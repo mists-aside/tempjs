@@ -42,38 +42,41 @@ pipeline {
     //   }
     // }
 
-    // stage('test') {
-    //   steps {
-    //     script {
-    //       sh """
-    //         ${NVM_LOAD}
-    //         npm run test;
-    //       """
-    //     }
-    //   }
-    // }
+    stage('test') {
+      steps {
+        script {
+          sh """
+            ${NVM_LOAD}
+            npm run test;
+          """
+        }
+      }
+    }
 
-    // stage('pre-release') {
-    //   when {
-    //     anyOf {
-    //       branch 'master';
-    //       branch 'develop';
-    //     }
-    //   }
-    //   steps {
-    //     script {
-    //       env.COMMIT_MESSAGE = GitLastCommitMessage()
-    //     }
-    //     sh "echo \"Commit Message: ${env.COMMIT_MESSAGE}\""
-    //   }
-    // }
+    stage('pre-release') {
+      when {
+        anyOf {
+          branch 'master';
+          branch 'develop';
+        }
+      }
+      steps {
+        script {
+          env.COMMIT_MESSAGE = GitLastCommitMessage()
+        }
+        sh "echo \"Commit Message: ${env.COMMIT_MESSAGE}\""
+      }
+    }
 
     stage('release') {
       when {
         branch 'develop';
       }
       steps {
-        NodeRelease('52e756f6-5625-41fb-bde9-ead983f84629', [releaseArgs: '--preRelease=dev'])
+        NodeRelease('52e756f6-5625-41fb-bde9-ead983f84629', [
+          releaseArgs: '--preRelease=dev',
+          preRun: env.NVM_LOAD
+        ])
 
         // sh "echo \"Commit Message: [${env.COMMIT_MESSAGE}]\""
         // script {
