@@ -63,8 +63,8 @@ export class FileHandle implements fs.promises.FileHandle {
    * See [fs.promises.FileHandle.appendFile()](https://nodejs.org/api/fs.html#fs_filehandle_appendfile_data_options)
    */
   appendFile(
-    data: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-    options?: {encoding?: string | null; mode?: string | number; flag?: string | number} | string | null,
+    data: string | Uint8Array,
+    options?: (fs.BaseEncodingOptions & {mode?: fs.Mode; flag?: fs.OpenMode}) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.appendFile(data, options);
   }
@@ -113,9 +113,11 @@ export class FileHandle implements fs.promises.FileHandle {
    * See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)
    */
   /* eslint-disable no-dupe-class-members */
-  readFile(options?: {encoding?: null | BufferEncoding; flag?: string | number} | null): Promise<Buffer>;
-  readFile(options: {encoding: BufferEncoding; flag?: string | number} | BufferEncoding): Promise<string>;
-  readFile(options?: {encoding?: string | null; flag?: string | number} | string | null): Promise<string | Buffer> {
+  readFile(options?: {encoding?: null; flag?: fs.OpenMode} | null): Promise<Buffer>;
+  readFile(options: {encoding: BufferEncoding; flag?: fs.OpenMode} | BufferEncoding): Promise<string>;
+  readFile(
+    options?: (fs.BaseEncodingOptions & {flag?: fs.OpenMode}) | BufferEncoding | null,
+  ): Promise<string | Buffer> {
     return this.filehandle.readFile(options);
   }
   /* eslint-enable no-dupe-class-members */
@@ -130,8 +132,10 @@ export class FileHandle implements fs.promises.FileHandle {
   /**
    * See [fs.promises.FileHandle.stat()](https://nodejs.org/api/fs.html#fs_filehandle_stat_options)
    */
-  stat(): Promise<fs.Stats> {
-    return this.filehandle.stat();
+  stat(opts?: fs.StatOptions & {bigint?: false}): Promise<fs.Stats>;
+  stat(opts: fs.StatOptions & {bigint: true}): Promise<fs.BigIntStats>;
+  stat(opts?: fs.StatOptions): Promise<fs.Stats | fs.BigIntStats> {
+    return this.filehandle.stat(opts);
   }
 
   /**
@@ -161,8 +165,10 @@ export class FileHandle implements fs.promises.FileHandle {
   // write<TBuffer extends Uint8Array>(buffer: TBuffer, offset?: number | null, length?: number | null, position?: number | null): Promise<{ bytesWritten: number, buffer: TBuffer }>;
   // write(data: any, position?: number | null, encoding?: string | null): Promise<{ bytesWritten: number, buffer: string }>;
   write(
-    data: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-    ...args: any // eslint-disable-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    data: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    ...args: any
   ): Promise<{bytesWritten: number; buffer: string}> {
     return this.filehandle.write(data, ...args);
   }
@@ -171,8 +177,8 @@ export class FileHandle implements fs.promises.FileHandle {
    * See [fs.promises.FileHandle.writeFile()](https://nodejs.org/api/fs.html#fs_filehandle_writefile_data_options)
    */
   writeFile(
-    data: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-    options?: {encoding?: string | null; mode?: string | number; flag?: string | number} | string | null,
+    data: string | Uint8Array,
+    options?: (fs.BaseEncodingOptions & {mode?: fs.Mode; flag?: fs.OpenMode}) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.writeFile(data, options);
   }
