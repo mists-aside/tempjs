@@ -1,3 +1,5 @@
+## [0.0.6-dev.1](https://github.com/mists-aside/tempjs/compare/0.0.6-dev.0...0.0.6-dev.1) (2021-02-22)
+
 ## [0.0.6-dev.0](https://github.com/mists-aside/tempjs/compare/0.0.5...0.0.6-dev.0) (2021-02-22)
 
 
