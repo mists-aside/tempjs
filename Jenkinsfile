@@ -73,10 +73,14 @@ pipeline {
         branch 'develop';
       }
       steps {
-        NodeRelease('52e756f6-5625-41fb-bde9-ead983f84629', [
-          releaseArgs: '--preRelease=dev',
-          preRun: env.NVM_LOAD
-        ])
+        NodeRelease(
+          '52e756f6-5625-41fb-bde9-ead983f84629',
+          '83811fdb-744b-45ab-acdb-54ab3baf50b5',
+          [
+            releaseArgs: '--preRelease=dev',
+            preRun: env.NVM_LOAD
+          ]
+        )
 
         // sh "echo \"Commit Message: [${env.COMMIT_MESSAGE}]\""
         // script {
