@@ -31,16 +31,16 @@ pipeline {
       }
     }
 
-    // stage('init') {
-    //   steps {
-    //     script {
-    //       sh """
-    //         ${NVM_LOAD}
-    //         npm install;
-    //       """
-    //     }
-    //   }
-    // }
+    stage('init') {
+      steps {
+        script {
+          sh """
+            ${NVM_LOAD}
+            npm install;
+          """
+        }
+      }
+    }
 
     stage('test') {
       steps {
