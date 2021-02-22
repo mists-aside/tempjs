@@ -84,6 +84,9 @@ pipeline {
     }
   }
   post {
+    always {
+      cleanWs()
+    }
     // https://www.jenkins.io/doc/pipeline/tour/post/
     // https://plugins.jenkins.io/telegram-notifications/
     failure {
