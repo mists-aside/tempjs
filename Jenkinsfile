@@ -107,7 +107,7 @@ pipeline {
         //       body: "Build finished with success: ${env.BUILD_URL}"
         // }
 
-      TelegramSendStatusOk('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
+      TelegramSendStatusOK('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
       }
     }
   }
