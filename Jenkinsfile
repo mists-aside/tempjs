@@ -48,21 +48,6 @@ pipeline {
       }
     }
 
-    stage('pre-release') {
-      when {
-        anyOf {
-          branch 'master';
-          branch 'develop';
-        }
-      }
-      steps {
-        script {
-          env.COMMIT_MESSAGE = GitLastCommitMessage()
-        }
-        sh "echo \"Commit Message: ${env.COMMIT_MESSAGE}\""
-      }
-    }
-
     stage('release') {
       when {
         branch 'master';
