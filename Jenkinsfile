@@ -73,13 +73,11 @@ pipeline {
         branch 'master';
       }
       steps {
-        NodeRelease(
-          '52e756f6-5625-41fb-bde9-ead983f84629',
-          '83811fdb-744b-45ab-acdb-54ab3baf50b5',
-          [
-            preRun: env.NVM_LOAD
-          ]
-        )
+        node.npmRelease([
+          gitCredentialsId: '83811fdb-744b-45ab-acdb-54ab3baf50b5',
+          npmTokenCredentialId: '52e756f6-5625-41fb-bde9-ead983f84629',
+          preCommand: env.NVM_LOAD
+        ])
       }
     }
   }
@@ -90,23 +88,14 @@ pipeline {
     // https://www.jenkins.io/doc/pipeline/tour/post/
     // https://plugins.jenkins.io/telegram-notifications/
     failure {
-      TelegramSendStatusFail('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
+      script {
+        telegram.sendStatusFail('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
+      }
     }
     success {
       script {
-        TelegramSendStatusOk('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
+        telegram.sendStatusOk('jk_pipeline_report_to_telegram_token','jk_pipeline_report_to_telegram_chatId')
       }
     }
   }
-}
-
-def testing(def lang, def lint, def test) {
-  sh """
-    . ~/.bashrc > /dev/null;
-    set -ex;
-    for version in 11 12 13 14 15; do \\
-      nvm use \$version; \\
-      bash ./.scripts/travis-test.sh ${lang} ${lint} ${test}; \\
-    done
-    """
 }
