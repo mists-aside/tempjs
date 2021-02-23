@@ -1,6 +1,5 @@
 @Library('my-jenkins-shared') _
 
-def modules = [:]
 pipeline {
   agent {
     label 'master' // test-1
@@ -15,10 +14,6 @@ pipeline {
     stage('nvm info') {
       steps {
         echo "NVM lies in ${NVM_DIR}"
-
-        script {
-          telegramSend(message: 'Hello World', chatId: 608276470)
-        }
 
         sh """
           set -ex;
@@ -68,5 +63,4 @@ pipeline {
       }
     }
   }
-
 }
