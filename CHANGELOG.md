@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/mists-aside/tempjs/compare/0.0.6-dev.1...0.0.7) (2021-06-20)
+
+
+### Features
+
+* version bump ([2762512](https://github.com/mists-aside/tempjs/commit/2762512e53db018d8884603bf1840616e2d18e39))
+
 ## [0.0.6-dev.1](https://github.com/mists-aside/tempjs/compare/0.0.6-dev.0...0.0.6-dev.1) (2021-02-22)
 
 ## [0.0.6-dev.0](https://github.com/mists-aside/tempjs/compare/0.0.5...0.0.6-dev.0) (2021-02-22)
