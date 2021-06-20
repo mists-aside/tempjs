@@ -11,7 +11,7 @@
     "build": "rollup -c --environment NODE_ENV:production",
     "ca:lint": "npm run prettier:write && npm run lint:write",
     "ca:quality": "npm run jscpd && npm run depcruise",
-    "ca:security": "npm run license-check && (npm audit || yarn audit --groups=dependencies)",
+    "ca:security": "npm run license-check && (npm audit --production || yarn audit --groups=dependencies)",
     "ca": "npm run ca:lint && npm run ca:quality && npm run ca:security",
     "clean": "rimraf .jscpd coverage dist docs",
     "depcruise": "depcruise --config .dependency-cruiser.js src -x src/*.d.ts",
