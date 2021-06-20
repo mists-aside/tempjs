@@ -4,11 +4,12 @@ os:
 - osx
 - windows
 node_js:
-- '10'
-- '11'
+
 - '12'
 - '13'
 - '14'
+- '15'
+- '16'
 - lts/*
 - node
 sudo: false
@@ -18,25 +19,27 @@ cache:
 before_script:
 - test ! -d node_modules || npm prune
 scripts:
+- npm run ca
 - npm run test
-- npm run
 after_script:
-- if [[ $TRAVIS_NODE_VERSION == '12' ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then npm run docs;
-  sonar-scanner; fi
+  - if [[ $TRAVIS_NODE_VERSION == '14' && $TRAVIS_OS_NAME == 'linux' ]]; then
+      npm run docs;
+    fi
+    # sonar-scanner;
 notifications:
   email:
     recipients:
     - dragos.cirjan@gmail.com
     on_success: never
     on_failure: always
-addons:
-  sonarcloud:
-    organization: mists-aside
-    token:
-      secure: esd7ImdbrV1ZKnjg0JxA96yAsQnYEg0SqwsieFex6QKDXRfRpDiocsAp2yyLroq2nirg5AvM+12Da0x86w4/mycrzvi2UNc3YZlUIgZ+xD6Sxem5tIXLJibVkZVKrF8kr2OT+GyHMrng0GbCYUHpMFLDIUKaMQu/vZp8bPCmsI7PBErcI9wjWzshdZg3My1438njol0fYx1whscaFoArigPMBiV/3bf6qbIMFbnj1VceyPdC90VOLTUOzsIVmOyNj0OGJcUMzh5IZCcac9HmQ3P/B1ZgUBfSu54LI7F2RANlmR3vVo7g0O/NRBdVKpf5s6HV7+nWk5Amd8XMwUw5fYFuoKRxo4mNVTJ6BgM2QigUD7TgwiQswKoEaW9B8z0DSrY0QF4RloHQ2lbf7QmD1PD4LmR0YrgOrnhEhISwoZkND+hk/XkqfdNXrJbQ/2YriutOAqGHrupNcKJRByXxBjkOzpumY8HA563NCX9nO2ikL00QGpcHYsf9e0+UhV4SgojWZ4NLYFEMDZZIuKxYa+sWJ/YsL7+CMhS3MbvDL88hAHI/xp7rj+OujJhkPcmDPi+rPQq7nRUrJ6xJtwJwT5v0DHsQT63ikI+vgvj+Ugd2klFoRBa5zWUP8AIX1s2eCVGbdjn+0ZyGxsmAZyYJUsNWJ7qcvcFByLI/6Llc5Ds=
-deploy:
-  provider: script
-  script: bash .scripts/npm-publish.sh
-  on:
-    tags: true
-  skip_cleanup: true
+# addons:
+#   sonarcloud:
+#     organization: mists-aside
+#     token:
+#       secure: esd7ImdbrV1ZKnjg0JxA96yAsQnYEg0SqwsieFex6QKDXRfRpDiocsAp2yyLroq2nirg5AvM+12Da0x86w4/mycrzvi2UNc3YZlUIgZ+xD6Sxem5tIXLJibVkZVKrF8kr2OT+GyHMrng0GbCYUHpMFLDIUKaMQu/vZp8bPCmsI7PBErcI9wjWzshdZg3My1438njol0fYx1whscaFoArigPMBiV/3bf6qbIMFbnj1VceyPdC90VOLTUOzsIVmOyNj0OGJcUMzh5IZCcac9HmQ3P/B1ZgUBfSu54LI7F2RANlmR3vVo7g0O/NRBdVKpf5s6HV7+nWk5Amd8XMwUw5fYFuoKRxo4mNVTJ6BgM2QigUD7TgwiQswKoEaW9B8z0DSrY0QF4RloHQ2lbf7QmD1PD4LmR0YrgOrnhEhISwoZkND+hk/XkqfdNXrJbQ/2YriutOAqGHrupNcKJRByXxBjkOzpumY8HA563NCX9nO2ikL00QGpcHYsf9e0+UhV4SgojWZ4NLYFEMDZZIuKxYa+sWJ/YsL7+CMhS3MbvDL88hAHI/xp7rj+OujJhkPcmDPi+rPQq7nRUrJ6xJtwJwT5v0DHsQT63ikI+vgvj+Ugd2klFoRBa5zWUP8AIX1s2eCVGbdjn+0ZyGxsmAZyYJUsNWJ7qcvcFByLI/6Llc5Ds=
+# deploy:
+#   provider: script
+#   script: bash .scripts/npm-publish.sh
+#   on:
+#     tags: true
+#   skip_cleanup: true

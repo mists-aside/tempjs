@@ -1,13 +1,9 @@
 import * as fs from 'fs';
-
 import * as os from 'os';
-
 import * as path from 'path';
 
 import bytes from 'bytes';
-
 import crs from 'crypto-random-string';
-
 import * as shortid from 'shortid';
 
 /**
@@ -41,8 +37,7 @@ export class FileHandle implements fs.promises.FileHandle {
    */
   public static async create(filename: string): Promise<FileHandle> {
     const filehandle = await fs.promises.open(filename, 'w+');
-    const fh = new FileHandle(filename, filehandle, filehandle.fd);
-    return fh;
+    return new FileHandle(filename, filehandle, filehandle.fd);
   }
 
   /**
@@ -64,7 +59,7 @@ export class FileHandle implements fs.promises.FileHandle {
    */
   appendFile(
     data: string | Uint8Array,
-    options?: (fs.BaseEncodingOptions & {mode?: fs.Mode; flag?: fs.OpenMode}) | BufferEncoding | null,
+    options?: (fs.BaseEncodingOptions & { mode?: fs.Mode; flag?: fs.OpenMode }) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.appendFile(data, options);
   }
@@ -98,14 +93,15 @@ export class FileHandle implements fs.promises.FileHandle {
   }
 
   /**
-   * See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_read_buffer_offset_length_position)
+   * See [fs.promises.FileHandle.read()](https://nodejs.org/api/fs.html#fs_filehandle_read_buffer_offset_
+   * length_position)
    */
   read<TBuffer extends Uint8Array>(
     buffer: TBuffer,
     offset?: number | null,
     length?: number | null,
     position?: number | null,
-  ): Promise<{bytesRead: number; buffer: TBuffer}> {
+  ): Promise<{ bytesRead: number; buffer: TBuffer }> {
     return this.filehandle.read(buffer, offset, length, position);
   }
 
@@ -113,10 +109,10 @@ export class FileHandle implements fs.promises.FileHandle {
    * See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)
    */
   /* eslint-disable no-dupe-class-members */
-  readFile(options?: {encoding?: null; flag?: fs.OpenMode} | null): Promise<Buffer>;
-  readFile(options: {encoding: BufferEncoding; flag?: fs.OpenMode} | BufferEncoding): Promise<string>;
+  readFile(options?: { encoding?: null; flag?: fs.OpenMode } | null): Promise<Buffer>;
+  readFile(options: { encoding: BufferEncoding; flag?: fs.OpenMode } | BufferEncoding): Promise<string>;
   readFile(
-    options?: (fs.BaseEncodingOptions & {flag?: fs.OpenMode}) | BufferEncoding | null,
+    options?: (fs.BaseEncodingOptions & { flag?: fs.OpenMode }) | BufferEncoding | null,
   ): Promise<string | Buffer> {
     return this.filehandle.readFile(options);
   }
@@ -132,8 +128,8 @@ export class FileHandle implements fs.promises.FileHandle {
   /**
    * See [fs.promises.FileHandle.stat()](https://nodejs.org/api/fs.html#fs_filehandle_stat_options)
    */
-  stat(opts?: fs.StatOptions & {bigint?: false}): Promise<fs.Stats>;
-  stat(opts: fs.StatOptions & {bigint: true}): Promise<fs.BigIntStats>;
+  stat(opts?: fs.StatOptions & { bigint?: false }): Promise<fs.Stats>;
+  stat(opts: fs.StatOptions & { bigint: true }): Promise<fs.BigIntStats>;
   stat(opts?: fs.StatOptions): Promise<fs.Stats | fs.BigIntStats> {
     return this.filehandle.stat(opts);
   }
@@ -162,14 +158,16 @@ export class FileHandle implements fs.promises.FileHandle {
   /**
    * See [fs.promises.FileHandle.write()](https://nodejs.org/api/fs.html#fs_filehandle_write_string_position_encoding)
    */
+  // eslint-disable-next-line max-len
   // write<TBuffer extends Uint8Array>(buffer: TBuffer, offset?: number | null, length?: number | null, position?: number | null): Promise<{ bytesWritten: number, buffer: TBuffer }>;
+  // eslint-disable-next-line max-len
   // write(data: any, position?: number | null, encoding?: string | null): Promise<{ bytesWritten: number, buffer: string }>;
   write(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
     data: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
     ...args: any
-  ): Promise<{bytesWritten: number; buffer: string}> {
+  ): Promise<{ bytesWritten: number; buffer: string }> {
     return this.filehandle.write(data, ...args);
   }
 
@@ -178,7 +176,7 @@ export class FileHandle implements fs.promises.FileHandle {
    */
   writeFile(
     data: string | Uint8Array,
-    options?: (fs.BaseEncodingOptions & {mode?: fs.Mode; flag?: fs.OpenMode}) | BufferEncoding | null,
+    options?: (fs.BaseEncodingOptions & { mode?: fs.Mode; flag?: fs.OpenMode }) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.writeFile(data, options);
   }
@@ -268,6 +266,46 @@ export const tempFile = (
   promise.then((fileHandler) => callback(null, fileHandler)).catch(callback);
 };
 
+type WriteOfSizeMethod = (fhos: FileHandle) => Promise<FileHandle>;
+
+const generateWriteOfSize = (localOptions: {
+  /**
+   * Size of the created file defined as a string representing a number followe by the 'b', 'Kb', 'Mb', 'Gb', 'Tb',
+   * 'Pb' sufixes.
+   */
+  size: string;
+  dir: string;
+  pattern: string;
+}): WriteOfSizeMethod => {
+  return async (fhos: FileHandle): Promise<FileHandle> => {
+    let size = bytes(localOptions.size);
+
+    const chunkSize = bytes('1Mb');
+
+    while (size > chunkSize) {
+      const written = await fhos.write(crs({ length: chunkSize /*, type: 'base64'*/ }), 'utf-8');
+      if (written.bytesWritten !== chunkSize) {
+        fhos.close();
+        throw new Error(
+          `error writing file: tried to write ${chunkSize} bytes, but only ${written.bytesWritten} were written`,
+        );
+      }
+      size -= chunkSize;
+    }
+
+    if (size > 0) {
+      const written = await fhos.write(crs({ length: size /*, type: 'base64'*/ }), 'utf-8');
+      if (written.bytesWritten !== size) {
+        fhos.close();
+        throw new Error(
+          `error writing file: tried to write ${size} bytes, but only ${written.bytesWritten} were written`,
+        );
+      }
+    }
+    return fhos;
+  };
+};
+
 /**
  * Options used by `tempFileOfSize` call, see description of the method.
  */
@@ -303,33 +341,7 @@ export const tempFileOfSize = (
     ...options,
   };
 
-  const writeOfSize = async (fhos: FileHandle): Promise<FileHandle> => {
-    let size = bytes(localOptions.size);
-
-    const chunkSize = bytes('1Mb');
-
-    while (size > chunkSize) {
-      const written = await fhos.write(crs({length: chunkSize /*, type: 'base64'*/}), 'utf-8');
-      if (written.bytesWritten !== chunkSize) {
-        fhos.close();
-        throw new Error(
-          `error writing file: tried to write ${chunkSize} bytes, but only ${written.bytesWritten} were written`,
-        );
-      }
-      size -= chunkSize;
-    }
-
-    if (size > 0) {
-      const written = await fhos.write(crs({length: size /*, type: 'base64'*/}), 'utf-8');
-      if (written.bytesWritten !== size) {
-        fhos.close();
-        throw new Error(
-          `error writing file: tried to write ${size} bytes, but only ${written.bytesWritten} were written`,
-        );
-      }
-    }
-    return fhos;
-  };
+  const writeOfSize = generateWriteOfSize(localOptions);
 
   if (!callback) {
     return (tempFile(options) as Promise<FileHandle>).then(writeOfSize);
@@ -337,7 +349,9 @@ export const tempFileOfSize = (
 
   /* eslint-disable @typescript-eslint/no-non-null-assertion */
   tempFile(options, (err: Error | null, fhos?: FileHandle) => {
-    if (err) return callback(err);
+    if (err) {
+      return callback(err);
+    }
     writeOfSize(fhos!)
       .then((fh) => callback(null, fh))
       .catch(callback);
@@ -475,6 +489,71 @@ export type TempDirWithFilesOptions = {
   randomize?: boolean;
 } & TempDirOptions;
 
+const tempFilesForTempDirWithFiles = async (
+  paths: string[],
+  localOptions: TempDirWithFilesOptions & TempFileOptions,
+  files: string[],
+): Promise<void> => {
+  for (const p of paths) {
+    // on each new path, randomizing max number of files
+    let maxFilesPerDir = localOptions.maxFilesPerDir as number;
+    if (localOptions.randomize) {
+      maxFilesPerDir = Math.floor(Math.random() * 100) % (localOptions.maxFilesPerDir as number);
+    }
+    while (maxFilesPerDir > 0) {
+      // on each new path, randomizing size
+      let size = bytes(localOptions.maxFileSize as string);
+      if (localOptions.randomize) {
+        size = Math.floor(Math.random() * Math.pow(10, `${size}`.length + 2)) % size;
+      }
+      // create file
+      const file = await tempFileOfSize({
+        dir: p,
+        size: bytes(size),
+      });
+      if (file) {
+        file.close();
+        files.push(file.name);
+      }
+      maxFilesPerDir--;
+    }
+  }
+};
+
+const tempSubDirsForTempDirWithFiles = async (
+  maxDepth: number,
+  paths: string[],
+  localOptions: TempDirWithFilesOptions & TempFileOptions,
+): Promise<void> => {
+  for (let depth = 1; depth <= maxDepth; depth++) {
+    // obtain the set of folders with a specific depth
+    const pathsOfDepth = paths.filter(
+      (p) =>
+        p
+          .replace(localOptions.dir as string, '')
+          .split(path.sep)
+          .filter((token) => token.length > 0).length === depth,
+    );
+    // on each new path, randomizing max number of subfolders
+    let maxSubFolders = localOptions.maxSubFolders;
+    if (localOptions.randomize) {
+      maxSubFolders = Math.floor(Math.random() * 100) % (localOptions.maxSubFolders as number);
+    }
+    let msf = maxSubFolders as number;
+    while (msf > 0) {
+      for (const pod of pathsOfDepth) {
+        const newPath = await tempDir({
+          dir: pod,
+        });
+        if (newPath) {
+          paths.push(newPath);
+        }
+      }
+      msf--;
+    }
+  }
+};
+
 /**
  * `tempDirWithFiles` creates a new temporary directory in the directory dir. New directory will recursively contain
  * other a max of `options.maxSubFolders` (can be randomized) directories to max depth of `options.maxDepth` (can
@@ -491,7 +570,8 @@ export type TempDirWithFilesOptions = {
  *
  * @param {TempDirOptions} options optional
  * @param {TempDirValidationCallback} callback optional
- * @returns {Promise<[string, string[], string[]]>|void} Returns Promise if callback is not defined, void if callback is defined.
+ * @returns {Promise<[string, string[], string[]]>|void} Returns Promise if callback is not defined, void if callback
+ *                                                       is defined.
  */
 /* eslint-disable no-async-promise-executor */
 export const tempDirWithFiles = (
@@ -519,57 +599,9 @@ export const tempDirWithFiles = (
       maxDepth = Math.floor(Math.random() * 100) % localOptions.maxDepth;
     }
 
-    for (let depth = 1; depth <= maxDepth; depth++) {
-      // obtain the set of folders with a specific depth
-      const pathsOfDepth = paths.filter(
-        (p) =>
-          p
-            .replace(localOptions.dir, '')
-            .split(path.sep)
-            .filter((token) => token.length > 0).length === depth,
-      );
-      // on each new path, randomizing max number of subfolders
-      let maxSubFolders = localOptions.maxSubFolders;
-      if (localOptions.randomize) {
-        maxSubFolders = Math.floor(Math.random() * 100) % localOptions.maxSubFolders;
-      }
-      while (maxSubFolders > 0) {
-        for (const pod of pathsOfDepth) {
-          const newPath = await tempDir({
-            dir: pod,
-          });
-          if (newPath) {
-            paths.push(newPath);
-          }
-        }
-        maxSubFolders--;
-      }
-    }
+    await tempSubDirsForTempDirWithFiles(maxDepth, paths, localOptions);
 
-    for (const p of paths) {
-      // on each new path, randomizing max number of files
-      let maxFilesPerDir = localOptions.maxFilesPerDir;
-      if (localOptions.randomize) {
-        maxFilesPerDir = Math.floor(Math.random() * 100) % localOptions.maxFilesPerDir;
-      }
-      while (maxFilesPerDir > 0) {
-        // on each new path, randomizing size
-        let size = bytes(localOptions.maxFileSize);
-        if (localOptions.randomize) {
-          size = Math.floor(Math.random() * Math.pow(10, `${size}`.length + 2)) % size;
-        }
-        // create file
-        const file = await tempFileOfSize({
-          dir: p,
-          size: bytes(size),
-        });
-        if (file) {
-          file.close();
-          files.push(file.name);
-        }
-        maxFilesPerDir--;
-      }
-    }
+    await tempFilesForTempDirWithFiles(paths, localOptions, files);
 
     resolve([paths[0], paths, files]);
   });
