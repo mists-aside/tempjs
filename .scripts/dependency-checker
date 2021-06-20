@@ -1,0 +1,10 @@
+#! /bin/bash
+
+function download_dependency_check() {
+  curl -sSL https://github.com/$(curl -sSL https://github.com/jeremylong/DependencyCheck/releases | grep download | egrep -e "check-[0-9].+.zip\"" | head -n 1 | awk -F '"' '{ print $2 }') --output ./.scripts/dependency-check.zip
+  unzip .scripts/dependency-check.zip -d .scripts
+}
+
+
+[ -d .scripts/dependency-check ] || download_dependency_check
+[ -d .scripts/dependency-check ] && bash .scripts/dependency-check/bin/dependency-check.sh --project "$(cat package.json | jq -r '.name')" --scan .
