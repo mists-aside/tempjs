@@ -116,8 +116,8 @@ pipeline {
             script {
               npm.release([
                 gitUrl: 'github.com/mists-aside/tempjs',
-                gitCredentialsId: '83811fdb-744b-45ab-acdb-54ab3baf50b5',
-                npmTokenCredentialId: '52e756f6-5625-41fb-bde9-ead983f84629',
+                gitCredentialsId: '52e756f6-5625-41fb-bde9-ead983f84629',
+                npmTokenCredentialId: '83811fdb-744b-45ab-acdb-54ab3baf50b5',
                 useNvm: true,
                 nodeVersion: params.NODE_VERSION
               ])
