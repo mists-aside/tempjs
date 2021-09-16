@@ -19,6 +19,7 @@ tsconfig*
 .nyc_output
 .report
 .rollupcache
+.scannerwork
 .scripts
 coverage
 doc
