@@ -1,4 +1,4 @@
-## [0.0.9](https://github.com/mists-aside/tempjs/compare/0.0.8...0.0.9) (2021-09-16)
+## [0.0.9-beta.0](https://github.com/mists-aside/tempjs/compare/0.0.8...0.0.9-beta.0) (2021-09-16)
 
 ## [0.0.8](https://github.com/mists-aside/tempjs/compare/0.0.8-beta.0...0.0.8) (2021-06-20)
 

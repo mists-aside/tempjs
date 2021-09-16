@@ -87,3 +87,6 @@ docs.json
 .scripts/dependency-check
 .scripts/dependency-check.zip
 dependency-check-report.html
+
+# sonar?
+.scannerwork
