@@ -94,7 +94,7 @@ in ${os.tmpdir()} with name matching \${reMatch}`, async function () {
       try {
         await tempDir({ default: true });
       } catch (e) {
-        err = e;
+        err = e as Error;
       }
       expect(err instanceof Error).to.be.true;
       expect((err as Error).toString()).to.equal('Error: invalid `options.pattern` value: please add pattern value');

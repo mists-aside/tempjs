@@ -1,3 +1,4 @@
+import * as events from 'events';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -59,7 +60,7 @@ export class FileHandle implements fs.promises.FileHandle {
    */
   appendFile(
     data: string | Uint8Array,
-    options?: (fs.BaseEncodingOptions & { mode?: fs.Mode; flag?: fs.OpenMode }) | BufferEncoding | null,
+    options?: (fs.ObjectEncodingOptions & fs.promises.FlagAndOpenMode) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.appendFile(data, options);
   }
@@ -109,10 +110,27 @@ export class FileHandle implements fs.promises.FileHandle {
    * See [fs.promises.FileHandle.readFile()](https://nodejs.org/api/fs.html#fs_filehandle_readfile_options)
    */
   /* eslint-disable no-dupe-class-members */
-  readFile(options?: { encoding?: null; flag?: fs.OpenMode } | null): Promise<Buffer>;
-  readFile(options: { encoding: BufferEncoding; flag?: fs.OpenMode } | BufferEncoding): Promise<string>;
   readFile(
-    options?: (fs.BaseEncodingOptions & { flag?: fs.OpenMode }) | BufferEncoding | null,
+    options?: {
+      encoding?: null;
+      flag?: fs.OpenMode;
+    } | null,
+  ): Promise<Buffer>;
+  readFile(
+    options:
+      | {
+          encoding: BufferEncoding;
+          flag?: fs.OpenMode;
+        }
+      | BufferEncoding,
+  ): Promise<string>;
+  readFile(
+    options?:
+      | (fs.ObjectEncodingOptions & {
+          flag?: fs.OpenMode;
+        })
+      | BufferEncoding
+      | null,
   ): Promise<string | Buffer> {
     return this.filehandle.readFile(options);
   }
@@ -176,7 +194,7 @@ export class FileHandle implements fs.promises.FileHandle {
    */
   writeFile(
     data: string | Uint8Array,
-    options?: (fs.BaseEncodingOptions & { mode?: fs.Mode; flag?: fs.OpenMode }) | BufferEncoding | null,
+    options?: (fs.ObjectEncodingOptions & fs.promises.FlagAndOpenMode & events.Abortable) | BufferEncoding | null,
   ): Promise<void> {
     return this.filehandle.writeFile(data, options);
   }
@@ -259,11 +277,14 @@ export const tempFile = (
       : localOptions.pattern + shortid.generate();
 
   const promise = FileHandle.create(path.join(localOptions.dir || __dirname, name));
-  if (!callback) {
-    return promise;
+
+  if (callback) {
+    promise.then((fileHandler) => callback(null, fileHandler)).catch(callback);
+    return;
   }
 
-  promise.then((fileHandler) => callback(null, fileHandler)).catch(callback);
+  // eslint-disable-next-line consistent-return
+  return promise;
 };
 
 type WriteOfSizeMethod = (fhos: FileHandle) => Promise<FileHandle>;
@@ -343,20 +364,24 @@ export const tempFileOfSize = (
 
   const writeOfSize = generateWriteOfSize(localOptions);
 
-  if (!callback) {
-    return (tempFile(options) as Promise<FileHandle>).then(writeOfSize);
+  if (callback) {
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    tempFile(options, (err: Error | null, fhos?: FileHandle) => {
+      if (!err) {
+        writeOfSize(fhos!)
+          .then((fh) => callback(null, fh))
+          .catch(callback);
+        return;
+      }
+      // eslint-disable-next-line consistent-return
+      return callback(err);
+    });
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    return;
   }
 
-  /* eslint-disable @typescript-eslint/no-non-null-assertion */
-  tempFile(options, (err: Error | null, fhos?: FileHandle) => {
-    if (err) {
-      return callback(err);
-    }
-    writeOfSize(fhos!)
-      .then((fh) => callback(null, fh))
-      .catch(callback);
-  });
-  /* eslint-enable @typescript-eslint/no-non-null-assertion */
+  // eslint-disable-next-line consistent-return
+  return (tempFile(options) as Promise<FileHandle>).then(writeOfSize);
 };
 
 /**
@@ -447,11 +472,13 @@ export const tempDir = (options?: TempDirOptions, callback?: TempDirValidationCa
     promise = fs.promises.mkdtemp(path.join(localOptions.dir, localOptions.pattern));
   }
 
-  if (!callback) {
-    return promise;
+  if (callback) {
+    promise.then((dirName) => callback(null, dirName)).catch(callback);
+    // eslint-disable-next-line consistent-return
+    return;
   }
 
-  promise.then((dirName) => callback(null, dirName)).catch(callback);
+  return promise;
 };
 
 /**
@@ -606,10 +633,12 @@ export const tempDirWithFiles = (
     resolve([paths[0], paths, files]);
   });
 
-  if (!callback) {
-    return promise;
+  if (callback) {
+    promise.then((result) => callback(null, result)).catch(callback);
+    return;
   }
 
-  promise.then((result) => callback(null, result)).catch(callback);
+  // eslint-disable-next-line consistent-return
+  return promise;
 };
 /* eslint-enable no-async-promise-executor */
